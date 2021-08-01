@@ -14,7 +14,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * 
+ * 
+ * Minecraft clients, 
+ * Love em or hate them, are a critical part of online Minecraft, whether you're on the Oldest Anarchy Server 
+ * In Minecraft, 2B2T, or simply using one to get an unfair advantage in PvP, clients are used daily. 
+ * But as with most things, clients are forever compete to gain the upper hand. 
+ * This video, we will be talking about the infamous war, between sigma client, and ligma client.
  */
+
 package bleach.hack;
 
 import com.google.common.eventbus.EventBus;
