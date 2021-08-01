@@ -17,6 +17,8 @@
  */
 package bleach.hack;
 
+import com.google.common.eventbus.EventBus;
+
 import bleach.hack.module.Module;
 import bleach.hack.module.ModuleManager;
 import bleach.hack.module.mods.ClickGui;
@@ -26,60 +28,61 @@ import bleach.hack.utils.Rainbow;
 import bleach.hack.utils.UpdateCheck;
 import bleach.hack.utils.file.BleachFileHelper;
 import bleach.hack.utils.file.BleachFileMang;
-import com.google.common.eventbus.EventBus;
 import net.fabricmc.api.ModInitializer;
 
 public class BleachHack implements ModInitializer {
 
-    public static final String NAME = "BigRat";
+	public static final String NAME = "MonsterRat";
 
-    public static final String VERSION = "v7.1";
+	public static final String VERSION = "v1.0";
 
-    public static final String CLIENT = NAME + " " + VERSION;
+	public static final String CLIENT = NAME + " " + VERSION;
 
-    public static EventBus eventBus = new EventBus();
+	public static EventBus eventBus = new EventBus();
 
-    public static FriendManager friendMang;
+	public static FriendManager friendMang;
 
-    @Override
-    public void onInitialize() {
-        System.out.println("Detected JRE: " + System.getProperty("java.runtime.version"));
-        System.out.println("Pre headless toggle property: " + System.getProperty("java.awt.headless"));
-        System.setProperty("java.awt.headless", "false");
-        System.out.println("Post headless toggle property: " + System.getProperty("java.awt.headless"));
-        BleachFileMang.init();
-        BleachFileHelper.readModules();
+	@Override
+	public void onInitialize() {
+		System.out.println("Detected JRE: " + System.getProperty("java.runtime.version"));
+		System.out.println("Pre headless toggle property: " + System.getProperty("java.awt.headless"));
+		System.setProperty("java.awt.headless", "false");
+		System.out.println("Post headless toggle property: " + System.getProperty("java.awt.headless"));
+		BleachFileMang.init();
+		BleachFileHelper.readModules();
 
-        ClickGui.clickGui.initWindows();
-        BleachFileHelper.readClickGui();
-        BleachFileHelper.readPrefix();
-        BleachFileHelper.readFriends();
+		ClickGui.clickGui.initWindows();
+		BleachFileHelper.readClickGui();
+		BleachFileHelper.readPrefix();
+		BleachFileHelper.readFriends();
 
-        for (Module m : ModuleManager.getModules()) m.init();
+		for (Module m : ModuleManager.getModules())
+			m.init();
 
-        eventBus.register(new Rainbow());
-        eventBus.register(new ModuleManager());
-        eventBus.register(new UpdateCheck());
+		eventBus.register(new Rainbow());
+		eventBus.register(new ModuleManager());
+		eventBus.register(new UpdateCheck());
 
-        BleachFileMang.createFile("drawn.txt");
+		BleachFileMang.createFile("drawn.txt");
 
-        for (String s : BleachFileMang.readFileLines("drawn.txt")) {
-            for (Module m : ModuleManager.getModules()) {
-                if (m.getName().toLowerCase().equals(s.toLowerCase())) {
-                    m.setDrawn(false);
-                }
-            }
-        }
-        if (!BleachFileMang.fileExists("cleanchat.txt")) {
-            BleachFileMang.createFile("cleanchat.txt");
-            String[] badWords = {"nigger", "fag", "retard", "autism", "chink", "tranny", "fuck", "shit", "nigga"};
-            for (String s : badWords) BleachFileMang.appendFile(s, "cleanchat.txt");
+		for (String s : BleachFileMang.readFileLines("drawn.txt")) {
+			for (Module m : ModuleManager.getModules()) {
+				if (m.getName().toLowerCase().equals(s.toLowerCase())) {
+					m.setDrawn(false);
+				}
+			}
+		}
+		if (!BleachFileMang.fileExists("cleanchat.txt")) {
+			BleachFileMang.createFile("cleanchat.txt");
+			String[] badWords = { "nigger", "fag", "retard", "autism", "chink", "tranny", "fuck", "shit", "nigga" };
+			for (String s : badWords)
+				BleachFileMang.appendFile(s, "cleanchat.txt");
 
-        }
-        //hey bro check my cute ui
-        Module ui = ModuleManager.getModule(UI.class);
-        if (!ui.isToggled()) ui.setToggled(true);
-    }
-
+		}
+		// hey bro check my cute ui
+		Module ui = ModuleManager.getModule(UI.class);
+		if (!ui.isToggled())
+			ui.setToggled(true);
+	}
 
 }
