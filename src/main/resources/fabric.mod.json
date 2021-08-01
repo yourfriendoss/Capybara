@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "bigrat",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "BigRat",
   "description": "low quality bleachhack skid",
   "authors": [
