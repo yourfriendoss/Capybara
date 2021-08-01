@@ -17,182 +17,196 @@
  */
 package bleach.hack.setting.base;
 
-import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.util.math.MatrixStack;
-import org.apache.commons.lang3.tuple.Triple;
-import org.lwjgl.opengl.GL11;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang3.tuple.Triple;
+import org.lwjgl.opengl.GL11;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
+import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.util.math.MatrixStack;
+
 public class SettingToggle extends SettingBase {
+	MinecraftClient client = MinecraftClient.getInstance();
+	public boolean state;
+	public String text;
 
-    public boolean state;
-    public String text;
+	protected boolean defaultState;
 
-    protected boolean defaultState;
+	protected List<SettingBase> children = new ArrayList<>();
+	protected boolean expanded = false;
 
-    protected List<SettingBase> children = new ArrayList<>();
-    protected boolean expanded = false;
+	public SettingToggle(String text, boolean state) {
+		this.state = state;
+		this.text = text;
 
-    public SettingToggle(String text, boolean state) {
-        this.state = state;
-        this.text = text;
+		defaultState = state;
+	}
 
-        defaultState = state;
-    }
+	public void toggle() {
+		state = !state;
+	}
 
-    public void toggle() { state = !state; }
+	public String getName() {
+		return text;
+	}
 
-    public String getName() {
-        return text;
-    }
+	public void render(ModuleWindow window, MatrixStack matrix, int x, int y, int len) {
+		String color2;
 
-    public void render(ModuleWindow window, MatrixStack matrix, int x, int y, int len) {
-        String color2;
+		if (state) {
+			if (window.mouseOver(x, y, x + len, y + 12))
+				color2 = "\u00a72";
+			else
+				color2 = "\u00a7a";
+		} else {
+			if (window.mouseOver(x, y, x + len, y + 12))
+				color2 = "\u00a74";
+			else
+				color2 = "\u00a7c";
+		}
 
-        if (state) {
-            if (window.mouseOver(x, y, x + len, y + 12)) color2 = "\u00a72";
-            else color2 = "\u00a7a";
-        } else {
-            if (window.mouseOver(x, y, x + len, y + 12)) color2 = "\u00a74";
-            else color2 = "\u00a7c";
-        }
+		if (!children.isEmpty()) {
+			if (window.rmDown && window.mouseOver(x, y, x + len, y + 12))
+				expanded = !expanded;
 
-        if (!children.isEmpty()) {
-            if (window.rmDown && window.mouseOver(x, y, x + len, y + 12)) expanded = !expanded;
+			/*
+			 * if (expanded) { window.fillGreySides(x + 1, y, x + len - 2, y + 12);
+			 * window.fillGreySides(x, y + 11, x + len - 1, y + getHeight(len));
+			 * DrawableHelper.fill(x, y, x + len - 3, y + 1, 0x90000000);
+			 * DrawableHelper.fill(x + 1, y + getHeight(len) - 2, x + 2, y + getHeight(len)
+			 * - 1, 0x90000000); DrawableHelper.fill(x + 2, y + getHeight(len) - 1, x + len
+			 * - 2, y + getHeight(len), 0x90b0b0b0);
+			 * 
+			 * int h = y + 12; for (SettingBase s: children) { s.render(window, x + 1, h,
+			 * len - 2);
+			 * 
+			 * h += s.getHeight(len - 2); } }
+			 */
+			if (expanded) {
+				DrawableHelper.fill(matrix, x + 2, y + 12, x + 3, y + getHeight(len) - 1, 0x90b0b0b0);
 
-			/*if (expanded) {
-				window.fillGreySides(x + 1, y, x + len - 2, y + 12);
-				window.fillGreySides(x, y + 11, x + len - 1, y + getHeight(len));
-				DrawableHelper.fill(x, y, x + len - 3, y + 1, 0x90000000);
-				DrawableHelper.fill(x + 1, y + getHeight(len) - 2, x + 2, y + getHeight(len) - 1, 0x90000000);
-				DrawableHelper.fill(x + 2, y + getHeight(len) - 1, x + len - 2, y + getHeight(len), 0x90b0b0b0);
-				
 				int h = y + 12;
-				for (SettingBase s: children) {
-					s.render(window, x + 1, h, len - 2);
-					
+				for (SettingBase s : children) {
+					s.render(window, matrix, x + 2, h, len - 2);
+
 					h += s.getHeight(len - 2);
 				}
-			}*/
-            if (expanded) {
-                DrawableHelper.fill(matrix, x + 2, y + 12, x + 3, y + getHeight(len) - 1, 0x90b0b0b0);
+			}
 
-                int h = y + 12;
-                for (SettingBase s : children) {
-                    s.render(window, matrix, x + 2, h, len - 2);
+			GL11.glPushMatrix();
+			GL11.glScaled(0.65, 0.65, 1);
+			client.textRenderer.drawWithShadow(matrix,
+					color2 + (expanded ? "[\u00a7lv" + color2 + "]" : "[\u00a7l>" + color2 + "]"),
+					(int) ((x + len - 13) * 1 / 0.65), (int) ((y + 4) * 1 / 0.65), -1);
+			GL11.glPopMatrix();
+		}
 
-                    h += s.getHeight(len - 2);
-                }
-            }
+		client.textRenderer.drawWithShadow(matrix, color2 + text, x + 3, y + 2, 0xffffff);
 
-            GL11.glPushMatrix();
-            GL11.glScaled(0.65, 0.65, 1);
-            MinecraftClient.getInstance().textRenderer.drawWithShadow(matrix,
-                    color2 + (expanded ? "[\u00a7lv" + color2 + "]" : "[\u00a7l>" + color2 + "]"), (int) ((x + len - 13) * 1 / 0.65), (int) ((y + 4) * 1 / 0.65), -1);
-            GL11.glPopMatrix();
-        }
+		if (window.mouseOver(x, y, x + len, y + 12) && window.lmDown)
+			state = !state;
+	}
 
+	public int getHeight(int len) {
+		int h = 12;
 
-        MinecraftClient.getInstance().textRenderer.drawWithShadow(matrix, color2 + text, x + 3, y + 2, 0xffffff);
+		if (expanded) {
+			h += 1;
+			for (SettingBase s : children)
+				h += s.getHeight(len - 2);
+		}
 
-        if (window.mouseOver(x, y, x + len, y + 12) && window.lmDown) state = !state;
-    }
+		return h;
+	}
 
-    public int getHeight(int len) {
-        int h = 12;
+	public SettingBase getChild(int c) {
+		return children.get(c);
+	}
 
-        if (expanded) {
-            h += 1;
-            for (SettingBase s : children) h += s.getHeight(len - 2);
-        }
+	public SettingToggle withChildren(SettingBase... children) {
+		this.children.addAll(Arrays.asList(children));
+		return this;
+	}
 
-        return h;
-    }
+	public SettingToggle withDesc(String desc) {
+		description = desc;
+		return this;
+	}
 
-    public SettingBase getChild(int c) {
-        return children.get(c);
-    }
+	public Triple<Integer, Integer, String> getGuiDesc(ModuleWindow window, int x, int y, int len) {
+		if (!expanded || window.mouseY - y <= 12)
+			return super.getGuiDesc(window, x, y, len);
 
-    public SettingToggle withChildren(SettingBase... children) {
-        this.children.addAll(Arrays.asList(children));
-        return this;
-    }
+		Triple<Integer, Integer, String> triple = null;
 
-    public SettingToggle withDesc(String desc) {
-        description = desc;
-        return this;
-    }
+		int h = y + 12;
+		for (SettingBase s : children) {
+			if (window.mouseOver(x + 2, h, x + len, h + s.getHeight(len))) {
+				triple = s.getGuiDesc(window, x + 2, h, len - 2);
+			}
 
-    public Triple<Integer, Integer, String> getGuiDesc(ModuleWindow window, int x, int y, int len) {
-        if (!expanded || window.mouseY - y <= 12) return super.getGuiDesc(window, x, y, len);
+			h += s.getHeight(len - 2);
+		}
 
-        Triple<Integer, Integer, String> triple = null;
+		return triple;
+	}
 
-        int h = y + 12;
-        for (SettingBase s : children) {
-            if (window.mouseOver(x + 2, h, x + len, h + s.getHeight(len))) {
-                triple = s.getGuiDesc(window, x + 2, h, len - 2);
-            }
+	public void readSettings(JsonElement settings) {
+		if (settings.isJsonPrimitive()) {
+			state = settings.getAsBoolean();
+		} else if (settings.isJsonObject()) {
+			JsonObject jo = settings.getAsJsonObject();
+			if (!jo.has("toggled"))
+				return;
 
-            h += s.getHeight(len - 2);
-        }
+			state = jo.get("toggled").getAsBoolean();
 
-        return triple;
-    }
+			for (Entry<String, JsonElement> e : jo.get("children").getAsJsonObject().entrySet()) {
+				for (SettingBase s : children) {
+					if (s.getName().equals(e.getKey())) {
+						s.readSettings(e.getValue());
+					}
+				}
+			}
+		}
+	}
 
-    public void readSettings(JsonElement settings) {
-        if (settings.isJsonPrimitive()) {
-            state = settings.getAsBoolean();
-        } else if (settings.isJsonObject()) {
-            JsonObject jo = settings.getAsJsonObject();
-            if (!jo.has("toggled")) return;
+	public JsonElement saveSettings() {
+		if (children.isEmpty()) {
+			return new JsonPrimitive(state);
+		} else {
+			JsonObject jo = new JsonObject();
+			jo.add("toggled", new JsonPrimitive(state));
 
-            state = jo.get("toggled").getAsBoolean();
+			JsonObject subJo = new JsonObject();
+			for (SettingBase s : children) {
+				subJo.add(s.getName(), s.saveSettings());
+			}
 
-            for (Entry<String, JsonElement> e : jo.get("children").getAsJsonObject().entrySet()) {
-                for (SettingBase s : children) {
-                    if (s.getName().equals(e.getKey())) {
-                        s.readSettings(e.getValue());
-                    }
-                }
-            }
-        }
-    }
+			jo.add("children", subJo);
+			return jo;
+		}
+	}
 
-    public JsonElement saveSettings() {
-        if (children.isEmpty()) {
-            return new JsonPrimitive(state);
-        } else {
-            JsonObject jo = new JsonObject();
-            jo.add("toggled", new JsonPrimitive(state));
+	@Override
+	public boolean isDefault() {
+		if (state != defaultState)
+			return false;
 
-            JsonObject subJo = new JsonObject();
-            for (SettingBase s : children) {
-                subJo.add(s.getName(), s.saveSettings());
-            }
+		for (SettingBase s : children) {
+			if (!s.isDefault())
+				return false;
+		}
 
-            jo.add("children", subJo);
-            return jo;
-        }
-    }
-
-    @Override
-    public boolean isDefault() {
-        if (state != defaultState) return false;
-
-        for (SettingBase s : children) {
-            if (!s.isDefault()) return false;
-        }
-
-        return true;
-    }
+		return true;
+	}
 }

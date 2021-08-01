@@ -17,44 +17,39 @@
  */
 package bleach.hack.command.commands;
 
+import java.util.Arrays;
+import java.util.List;
+
 import bleach.hack.BleachHack;
 import bleach.hack.command.Command;
 import bleach.hack.utils.BleachLogger;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class CmdCredits extends Command {
 
-    @Override
-    public String getAlias() {
-        return "credits";
-    }
+	@Override
+	public String getAlias() {
+		return "credits";
+	}
 
-    @Override
-    public String getDescription() {
-        return "credits to people";
-    }
+	@Override
+	public String getDescription() {
+		return "credits to people";
+	}
 
-    @Override
-    public String getSyntax() {
-        return "credits";
-    }
+	@Override
+	public String getSyntax() {
+		return "credits";
+	}
 
-    @Override
-    public void onCommand(String command, String[] args) throws Exception {
-        String cmd = null;
-        try {
-            cmd = args[0];
-        } catch (Exception e) {
-        }
-        List<String> credits = Arrays.asList(
-                "\u00A73-=\u00A7f+\u00A73=- " + BleachHack.CLIENT + " credits -=\u00A7f+\u00A73=-",
-                "\u00A73Bleach \u00A7fmade the base and like 60% of the modules",
-                "\u00A73epearl \u00A7fadded ~30 modules and changed client's UI",
-                "\u00a73ZimnyCat \u00A7fmade this skid of skid"
-        );
-        for (String s : credits) BleachLogger.noPrefixMessage(s);
-    }
+	@Override
+	public void onCommand(String command, String[] args) throws Exception {
+		List<String> credits = Arrays.asList(
+				"\u00A73-=\u00A7f+\u00A73=- " + BleachHack.CLIENT + " credits -=\u00A7f+\u00A73=-",
+				"\u00A73Bleach \u00A7fmade the base and like 60% of the modules",
+				"\u00A73epearl \u00A7fadded ~30 modules and changed client's UI",
+				"\u00a73ZimnyCat \u00A7fmade this skid of skid");
+		for (String s : credits)
+			BleachLogger.noPrefixMessage(s);
+	}
 
 }

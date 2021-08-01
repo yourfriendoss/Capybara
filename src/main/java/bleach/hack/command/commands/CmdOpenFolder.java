@@ -17,41 +17,40 @@
  */
 package bleach.hack.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.command.CommandManager;
-import bleach.hack.utils.BleachLogger;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.HoverEvent;
-import net.minecraft.text.LiteralText;
-
-import java.awt.*;
+import java.awt.Desktop;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.nio.file.Paths;
 
+import bleach.hack.command.Command;
+import bleach.hack.utils.BleachLogger;
+import net.minecraft.client.MinecraftClient;
+
 public class CmdOpenFolder extends Command {
+	MinecraftClient client = MinecraftClient.getInstance();
 
-    @Override
-    public String getAlias() {
-        return "openfolder";
-    }
+	@Override
+	public String getAlias() {
+		return "openfolder";
+	}
 
-    @Override
-    public String getDescription() {
-        return "opens bleach folder";
-    }
+	@Override
+	public String getDescription() {
+		return "opens bleach folder";
+	}
 
-    @Override
-    public String getSyntax() {
-        return "openfolder";
-    }
+	@Override
+	public String getSyntax() {
+		return "openfolder";
+	}
 
-    @Override
-    public void onCommand(String command, String[] args) throws Exception {
-        BleachLogger.infoMessage("Opening bleach folder");
-        if(!GraphicsEnvironment.isHeadless()) {
-            System.setProperty("java.awt.headless", "false");
-        }
-        Desktop.getDesktop().open(new File(String.valueOf(Paths.get(MinecraftClient.getInstance().runDirectory.getPath(), "bleach/"))));
-    }
+	@Override
+	public void onCommand(String command, String[] args) throws Exception {
+		BleachLogger.infoMessage("Opening bleach folder");
+		if (!GraphicsEnvironment.isHeadless()) {
+			System.setProperty("java.awt.headless", "false");
+		}
+		Desktop.getDesktop().open(new File(String.valueOf(Paths.get(client.runDirectory.getPath(), "bleach/"))));
+	}
 
 }

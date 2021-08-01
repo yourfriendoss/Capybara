@@ -25,7 +25,6 @@ import bleach.hack.module.mods.ClickGui;
 import bleach.hack.module.mods.UI;
 import bleach.hack.utils.FriendManager;
 import bleach.hack.utils.Rainbow;
-import bleach.hack.utils.UpdateCheck;
 import bleach.hack.utils.file.BleachFileHelper;
 import bleach.hack.utils.file.BleachFileMang;
 import net.fabricmc.api.ModInitializer;
@@ -61,7 +60,6 @@ public class BleachHack implements ModInitializer {
 
 		eventBus.register(new Rainbow());
 		eventBus.register(new ModuleManager());
-		eventBus.register(new UpdateCheck());
 
 		BleachFileMang.createFile("drawn.txt");
 

@@ -1,9 +1,7 @@
 package bleach.hack.utils;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 /**
@@ -11,16 +9,18 @@ import net.minecraft.world.World;
  */
 public class Wrapper {
 
-    private static TextRenderer textRenderer;
+	static MinecraftClient client = MinecraftClient.getInstance();
 
-    public static MinecraftClient getMinecraft() {
-        return MinecraftClient.getInstance();
-    }
-    public static ClientPlayerEntity getPlayer() {
-        return getMinecraft().player;
-    }
-    public static World getWorld() {
-        return getMinecraft().world;
-    }
+	public static MinecraftClient getMinecraft() {
+		return MinecraftClient.getInstance();
+	}
+
+	public static ClientPlayerEntity getPlayer() {
+		return client.player;
+	}
+
+	public static World getWorld() {
+		return client.world;
+	}
 
 }

@@ -18,50 +18,46 @@
 package bleach.hack.command.commands;
 
 import bleach.hack.command.Command;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
 import bleach.hack.utils.BleachLogger;
 import bleach.hack.utils.LoginManager;
-import bleach.hack.utils.file.BleachFileMang;
 import net.minecraft.network.packet.s2c.play.DisconnectS2CPacket;
 import net.minecraft.text.LiteralText;
 
-import java.util.List;
-
 public class CmdLogin extends Command {
 
-    @Override
-    public String getAlias() {
-        return "login";
-    }
+	@Override
+	public String getAlias() {
+		return "login";
+	}
 
-    @Override
-    public String getDescription() {
-        return "Login to an account";
-    }
+	@Override
+	public String getDescription() {
+		return "Login to an account";
+	}
 
-    @Override
-    public String getSyntax() {
-        return "login [email] [password]";
-    }
+	@Override
+	public String getSyntax() {
+		return "login [email] [password]";
+	}
 
-    @Override
-    public void onCommand(String command, String[] args) throws Exception {
-        if (args[0] == null || args[1] == null) {
-            BleachLogger.errorMessage("Missing email or password.");
-            return;
-        }
-        String loginResult = LoginManager.login(args[0], args[1]);
-        try {
-                if (loginResult.equals("\u00a7aLogin Successful")) {
-                    this.mc.player.networkHandler.onDisconnect(new DisconnectS2CPacket(new LiteralText("Successfully logged in as \"" + mc.getSession().getUsername() + "\", please reconnect.")));
-                } else {
-                    BleachLogger.errorMessage(loginResult);
-                }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-    }
+	@Override
+	public void onCommand(String command, String[] args) throws Exception {
+		if (args[0] == null || args[1] == null) {
+			BleachLogger.errorMessage("Missing email or password.");
+			return;
+		}
+		String loginResult = LoginManager.login(args[0], args[1]);
+		try {
+			if (loginResult.equals("\u00a7aLogin Successful")) {
+				this.mc.player.networkHandler.onDisconnect(new DisconnectS2CPacket(new LiteralText(
+						"Successfully logged in as \"" + mc.getSession().getUsername() + "\", please reconnect.")));
+			} else {
+				BleachLogger.errorMessage(loginResult);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+	}
 
 }
