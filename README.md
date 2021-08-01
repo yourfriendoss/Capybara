@@ -1,18 +1,10 @@
-# BigRat Utility Mod
-![](https://img.shields.io/github/downloads/ZimnyCat/BigRat/total)
-![](https://img.shields.io/github/commit-activity/m/ZimnyCat/BigRat)
-![](https://img.shields.io/github/last-commit/ZimnyCat/BigRat)
-![](https://img.shields.io/badge/kosher-100%25-brightgreen)
+# monster rat (omg)
 
-open-source client開源客戶端 minecraft我的世界 100% no virus無病毒 Xi Jinping習近平 中國共產黨 
+## who did you skid???
+this is a skid from a skid from a skid from a skid  
+skid graph:
+[epearl skidded bleachhack](https://github.com/22s/bleachhack-1.16-epearl-edition) then [zimny cat skidded epearl's bleachhack, to make bigrat](https://github.com/ZimnyCat/BigRat), then i skidded bigrat to make monsterrat
 
-Работает на Fabric 1.16.5
-
-## Thanks
-[BleachHack](https://github.com/BleachDrinker420/bleachhack-1.14) от [BleachDrinker420](https://github.com/BleachDrinker420)
-
-[BleachHack epearl edition](https://github.com/22s/bleachhack-1.16-epearl-edition) от [epearl](https://github.com/22s)
-
-[big rat](https://bigrat.monster/) от [big rat LLC](https://github.com/bigratmonster)
-
-![](https://bigrat.site/bigrat.png)
+## why did i do this?  
+bleachhack has a fuck ton of memory leaks that are unnoticed by bigrat  
+and that i didnt like how bigrats UI looked  
