@@ -24,25 +24,25 @@
  * This video, we will be talking about the infamous war, between sigma client, and ligma client.
  */
 
-package bleach.hack;
+package friend.capybara;
 
 import com.google.common.eventbus.EventBus;
 
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.module.mods.UI;
-import bleach.hack.utils.FriendManager;
-import bleach.hack.utils.Rainbow;
-import bleach.hack.utils.file.BleachFileHelper;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.module.mods.UI;
+import friend.capybara.utils.FriendManager;
+import friend.capybara.utils.Rainbow;
+import friend.capybara.utils.file.FileHelper;
+import friend.capybara.utils.file.FileManager;
 import net.fabricmc.api.ModInitializer;
 
-public class BleachHack implements ModInitializer {
+public class Capybara implements ModInitializer {
 
-	public static final String NAME = "MonsterRat";
+	public static final String NAME = "Capybara";
 
-	public static final String VERSION = "v1.0";
+	public static final String VERSION = "v2.0";
 
 	public static final String CLIENT = NAME + " " + VERSION;
 
@@ -56,13 +56,13 @@ public class BleachHack implements ModInitializer {
 		System.out.println("Pre headless toggle property: " + System.getProperty("java.awt.headless"));
 		System.setProperty("java.awt.headless", "false");
 		System.out.println("Post headless toggle property: " + System.getProperty("java.awt.headless"));
-		BleachFileMang.init();
-		BleachFileHelper.readModules();
+		FileManager.init();
+		FileHelper.readModules();
 
 		ClickGui.clickGui.initWindows();
-		BleachFileHelper.readClickGui();
-		BleachFileHelper.readPrefix();
-		BleachFileHelper.readFriends();
+		FileHelper.readClickGui();
+		FileHelper.readPrefix();
+		FileHelper.readFriends();
 
 		for (Module m : ModuleManager.getModules())
 			m.init();
@@ -70,20 +70,20 @@ public class BleachHack implements ModInitializer {
 		eventBus.register(new Rainbow());
 		eventBus.register(new ModuleManager());
 
-		BleachFileMang.createFile("drawn.txt");
+		FileManager.createFile("drawn.txt");
 
-		for (String s : BleachFileMang.readFileLines("drawn.txt")) {
+		for (String s : FileManager.readFileLines("drawn.txt")) {
 			for (Module m : ModuleManager.getModules()) {
 				if (m.getName().toLowerCase().equals(s.toLowerCase())) {
 					m.setDrawn(false);
 				}
 			}
 		}
-		if (!BleachFileMang.fileExists("cleanchat.txt")) {
-			BleachFileMang.createFile("cleanchat.txt");
+		if (!FileManager.fileExists("cleanchat.txt")) {
+			FileManager.createFile("cleanchat.txt");
 			String[] badWords = { "nigger", "fag", "retard", "autism", "chink", "tranny", "fuck", "shit", "nigga" };
 			for (String s : badWords)
-				BleachFileMang.appendFile(s, "cleanchat.txt");
+				FileManager.appendFile(s, "cleanchat.txt");
 
 		}
 		// hey bro check my cute ui

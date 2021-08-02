@@ -15,16 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.command.CommandManager;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.AntiChunkBan;
-import bleach.hack.utils.BleachLogger;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.concurrent.Future;
@@ -38,6 +30,15 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.command.CommandManager;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.AntiChunkBan;
+import friend.capybara.utils.CapyLogger;
 
 @Mixin(ClientConnection.class)
 public class MixinClientConnection {
@@ -53,7 +54,7 @@ public class MixinClientConnection {
         if (this.channel.isOpen() && packet_1 != null) {
             try {
                 EventReadPacket event = new EventReadPacket(packet_1);
-                BleachHack.eventBus.post(event);
+                Capybara.eventBus.post(event);
                 if (event.isCancelled()) callback.cancel();
             } catch (Exception exception) {
             }
@@ -71,7 +72,7 @@ public class MixinClientConnection {
         }
 
         EventSendPacket event = new EventSendPacket(packet_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
 
         if (event.isCancelled()) callback.cancel();
     }
@@ -82,7 +83,7 @@ public class MixinClientConnection {
         if (!ModuleManager.getModule(AntiChunkBan.class).isToggled()) return;
 
         if (!(throwable_1 instanceof PacketEncoderException)) {
-            BleachLogger.warningMessage("Canceled Defect Packet: " + throwable_1);
+            CapyLogger.warningMessage("Canceled Defect Packet: " + throwable_1);
             callback.cancel();
         }
     }

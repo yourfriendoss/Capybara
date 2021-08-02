@@ -1,4 +1,4 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +7,11 @@ import java.util.regex.Pattern;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.command.Command;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.command.Command;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 
 public class CleanChat extends Module {
@@ -27,7 +27,7 @@ public class CleanChat extends Module {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		for (String s : BleachFileMang.readFileLines("cleanchat.txt")) {
+		for (String s : FileManager.readFileLines("cleanchat.txt")) {
 			blacklistedWords.add(s);
 		}
 	}

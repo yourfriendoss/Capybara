@@ -1,4 +1,4 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;

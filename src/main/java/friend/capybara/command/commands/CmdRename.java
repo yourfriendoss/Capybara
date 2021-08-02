@@ -15,10 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 
@@ -42,7 +42,7 @@ public class CmdRename extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         if (!mc.player.abilities.creativeMode) {
-            BleachLogger.errorMessage("Not In Creative Mode!");
+            CapyLogger.errorMessage("Not In Creative Mode!");
             return;
         }
 
@@ -52,7 +52,7 @@ public class CmdRename extends Command {
         for (int j = 0; j < args.length; j++) name += args[j] += " ";
 
         i.setCustomName(new LiteralText(name.replace("&", "\u00a7").replace("\u00a7\u00a7", "&")));
-        BleachLogger.infoMessage("Renamed Item");
+        CapyLogger.infoMessage("Renamed Item");
     }
 
 }

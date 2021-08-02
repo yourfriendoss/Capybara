@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.render.*;

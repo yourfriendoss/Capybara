@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.network.packet.s2c.play.DisconnectS2CPacket;
 import net.minecraft.util.Formatting;
@@ -33,11 +34,11 @@ public class JoinLeaveMSGs extends Module {
         } else if (time != -1 && (System.currentTimeMillis() - time) > 1000) {
             for (PlayerListEntry player : mc.player.networkHandler.getPlayerList()) {
                 if (!players.contains(player.getProfile().getName()))
-                    BleachLogger.noPrefixMessage(getMSG(player.getProfile().getName() + " joined"));
+                    CapyLogger.noPrefixMessage(getMSG(player.getProfile().getName() + " joined"));
             }
             for (String player : players) {
                 if (mc.player.networkHandler.getPlayerListEntry(player) == null)
-                    BleachLogger.noPrefixMessage(getMSG(player + " left"));
+                    CapyLogger.noPrefixMessage(getMSG(player + " left"));
             }
             time = -1;
             players.clear();

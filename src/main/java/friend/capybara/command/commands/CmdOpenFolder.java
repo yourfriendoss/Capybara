@@ -15,15 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
 import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.nio.file.Paths;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.client.MinecraftClient;
 
 public class CmdOpenFolder extends Command {
@@ -46,7 +46,7 @@ public class CmdOpenFolder extends Command {
 
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		BleachLogger.infoMessage("Opening bleach folder");
+		CapyLogger.infoMessage("Opening bleach folder");
 		if (!GraphicsEnvironment.isHeadless()) {
 			System.setProperty("java.awt.headless", "false");
 		}

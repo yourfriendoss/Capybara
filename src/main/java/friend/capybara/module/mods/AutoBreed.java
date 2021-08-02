@@ -1,8 +1,9 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.Hand;

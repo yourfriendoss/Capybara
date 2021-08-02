@@ -1,15 +1,16 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.Finder;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.Finder;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -66,7 +67,7 @@ public class AnchorAura extends Module {
             for (PlayerEntity p : mc.world.getPlayers()) {
                 if (mc.player.getBlockPos().equals(p.getBlockPos()) && getSetting(3).asToggle().state) continue;
                 if (mc.player.distanceTo(p) > range || p == mc.player || p.isDead()
-                        || BleachHack.friendMang.has(p.getDisplayName().getString())) continue;
+                        || Capybara.friendMang.has(p.getDisplayName().getString())) continue;
                 BlockPos pos = p.getBlockPos().up().up();
                 Vec3d vec = new Vec3d(pos.getX(), pos.getY(), pos.getZ());
                 if (mc.world.getBlockState(pos).getBlock() == Blocks.GLOWSTONE && getSetting(2).asToggle().state) {

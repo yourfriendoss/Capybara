@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.utils.RenderUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.utils.RenderUtils;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 

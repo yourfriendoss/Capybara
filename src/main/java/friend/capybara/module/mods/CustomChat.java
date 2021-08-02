@@ -1,4 +1,4 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,14 +7,14 @@ import java.util.Map.Entry;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.mods.CustomChat.CustomFont.CharMap;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.FabricReflect;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.mods.CustomChat.CustomFont.CharMap;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.FabricReflect;
+import friend.capybara.utils.file.FileHelper;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 
 public class CustomChat extends Module {
@@ -59,8 +59,8 @@ public class CustomChat extends Module {
 					CharMap.single('U', '\u03c5'), CharMap.single('V', '\u03bd'), CharMap.single('W', '\u03c9'),
 					CharMap.single('X', '\u03c7'), CharMap.single('Y', '\u0443')));
 
-	public String prefix = "this some dumb shit ->";
-	public String suffix = "massive rat :flushed:";
+	public String prefix = "✼";
+	public String suffix = "capybara client ⦮ ⦯";
 
 	public CustomChat() {
 		super("CustomChat", KEY_UNBOUND, Category.CHAT,
@@ -76,11 +76,11 @@ public class CustomChat extends Module {
 	}
 
 	public void init() {
-		String pfx = BleachFileHelper.readMiscSetting("customChatPrefix");
+		String pfx = FileHelper.readMiscSetting("customChatPrefix");
 		if (pfx != null)
 			prefix = pfx;
 
-		String sfx = BleachFileHelper.readMiscSetting("customChatSuffix");
+		String sfx = FileHelper.readMiscSetting("customChatSuffix");
 		if (sfx != null)
 			suffix = sfx;
 	}

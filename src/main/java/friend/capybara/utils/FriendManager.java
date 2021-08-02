@@ -1,4 +1,4 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import net.minecraft.util.Formatting;
 

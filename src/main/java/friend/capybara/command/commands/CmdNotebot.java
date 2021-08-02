@@ -15,16 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
-
-import bleach.hack.command.Command;
-import bleach.hack.gui.NotebotScreen;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.BleachQueue;
-import bleach.hack.utils.Midi2Notebot;
-import bleach.hack.utils.file.BleachFileMang;
+package friend.capybara.command.commands;
 
 import java.util.List;
+
+import friend.capybara.command.Command;
+import friend.capybara.gui.NotebotScreen;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.CapyQueue;
+import friend.capybara.utils.Midi2Notebot;
+import friend.capybara.utils.file.FileManager;
 
 public class CmdNotebot extends Command {
 
@@ -48,14 +48,14 @@ public class CmdNotebot extends Command {
         if (args.length >= 2 && args[0].equalsIgnoreCase("convert")) {
             int i = 0;
             String s = "";
-            List<List<Integer>> notes = Midi2Notebot.convert(BleachFileMang.stringsToPath(args[1]));
+            List<List<Integer>> notes = Midi2Notebot.convert(FileManager.stringsToPath(args[1]));
 
-            while (BleachFileMang.fileExists("notebot", "notebot" + i + ".txt")) i++;
+            while (FileManager.fileExists("notebot", "notebot" + i + ".txt")) i++;
             for (List<Integer> i1 : notes) s += i1.get(0) + ":" + i1.get(1) + ":" + i1.get(2) + "\n";
-            BleachFileMang.appendFile(s, "notebot", "notebot" + i + ".txt");
-            BleachLogger.infoMessage("Saved Song As: notebot" + i + ".txt [" + notes.size() + " Notes]");
+            FileManager.appendFile(s, "notebot", "notebot" + i + ".txt");
+            CapyLogger.infoMessage("Saved Song As: notebot" + i + ".txt [" + notes.size() + " Notes]");
         } else {
-            BleachQueue.add(() -> mc.openScreen(new NotebotScreen()));
+            CapyQueue.add(() -> mc.openScreen(new NotebotScreen()));
         }
     }
 

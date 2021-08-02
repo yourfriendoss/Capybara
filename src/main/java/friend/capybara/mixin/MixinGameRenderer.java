@@ -15,12 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.NoRender;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -33,13 +29,18 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.NoRender;
+
 @Mixin(GameRenderer.class)
 public class MixinGameRenderer {
 
     @Inject(at = @At("HEAD"), method = "renderHand", cancellable = true)
     private void renderHand(MatrixStack matrixStack_1, Camera camera, float tickDelta, CallbackInfo info) {
         EventWorldRender event = new EventWorldRender(tickDelta);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) info.cancel();
     }
 

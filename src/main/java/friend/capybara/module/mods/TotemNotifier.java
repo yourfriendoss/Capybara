@@ -1,15 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.HashMap;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -42,12 +42,12 @@ public class TotemNotifier extends Module {
 					totem = true;
 				if (!players.containsKey(displayName)) {
 					players.putIfAbsent(displayName, totem);
-					BleachLogger.infoMessage(totem ? "\u00a7f" + displayName + " \u00a73has totem in his hand"
+					CapyLogger.infoMessage(totem ? "\u00a7f" + displayName + " \u00a73has totem in his hand"
 							: "\u00a7f" + displayName + " \u00a73doesn't have totem in his hand");
 				}
 				if (players.get(displayName) != totem) {
 					players.put(displayName, totem);
-					BleachLogger.infoMessage(totem ? "\u00a7f" + displayName + " \u00a73now has totem in his hand"
+					CapyLogger.infoMessage(totem ? "\u00a7f" + displayName + " \u00a73now has totem in his hand"
 							: "\u00a7f" + displayName + " \u00a73now doesn't have totem in his hand");
 				}
 			}

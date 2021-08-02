@@ -1,6 +1,6 @@
 // Taken from https://github.com/Patbox/polymer/
 
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;

@@ -1,8 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.SpeedMine;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
@@ -19,6 +16,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.SpeedMine;
 
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity extends LivingEntity {

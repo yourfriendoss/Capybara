@@ -1,7 +1,7 @@
-package bleach.hack.setting.other;
+package friend.capybara.setting.other;
 
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingToggle;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingToggle;
 
 public class SettingRotate extends SettingToggle {
 

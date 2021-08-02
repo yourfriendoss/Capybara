@@ -1,13 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingMode;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingMode;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Hand;
@@ -38,7 +38,7 @@ public class AutoTrap extends Module {
 		if (blockSlot == -1)
 			return;
 		for (PlayerEntity player : mc.world.getPlayers()) {
-			if (player != mc.player && !BleachHack.friendMang.has(player.getDisplayName().getString()))
+			if (player != mc.player && !Capybara.friendMang.has(player.getDisplayName().getString()))
 				if (target == null) {
 					target = player;
 				} else if (mc.player.distanceTo(target) > mc.player.distanceTo(player)) {

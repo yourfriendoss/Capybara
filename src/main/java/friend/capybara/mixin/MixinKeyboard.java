@@ -15,15 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventKeyPress;
 import net.minecraft.client.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventKeyPress;
 
 @Mixin(Keyboard.class)
 public class MixinKeyboard {
@@ -35,7 +36,7 @@ public class MixinKeyboard {
 
         if (key != -1) {
             EventKeyPress event = new EventKeyPress(key, scanCode);
-            BleachHack.eventBus.post(event);
+            Capybara.eventBus.post(event);
             if (event.isCancelled()) callbackInfo.cancel();
         }
     }

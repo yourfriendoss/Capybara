@@ -1,8 +1,8 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
 
 public class NoKeyBlock extends Module {
 

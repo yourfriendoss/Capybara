@@ -16,16 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachQueue;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyQueue;
 
 public class Zoom extends Module {
 
@@ -40,7 +41,7 @@ public class Zoom extends Module {
 
     public void onEnable() {
         super.onEnable();
-        BleachQueue.cancelQueue("zoom");
+        CapyQueue.cancelQueue("zoom");
 
         prevFov = mc.options.fov;
         prevSens = mc.options.mouseSensitivity;
@@ -57,7 +58,7 @@ public class Zoom extends Module {
             mc.options.mouseSensitivity = prevSens;
         } else {
             for (double f = mc.options.fov; f < prevFov; f *= 1.4) {
-                BleachQueue.add("zoom", () -> {
+                CapyQueue.add("zoom", () -> {
                     mc.options.fov = Math.min(prevFov, mc.options.fov * 1.4);
                     mc.options.mouseSensitivity = Math.min(prevSens, mc.options.mouseSensitivity * 1.4);
                 });

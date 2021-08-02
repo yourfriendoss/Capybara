@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import org.apache.commons.lang3.tuple.MutablePair;
 
@@ -24,7 +24,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class BleachQueue {
+public class CapyQueue {
 
     /* cum queue */
     private static HashMap<String, Deque<MutablePair<Runnable, Integer>>> queues = new HashMap<>();

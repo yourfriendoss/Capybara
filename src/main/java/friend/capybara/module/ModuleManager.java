@@ -15,11 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module;
+package friend.capybara.module;
 
-import bleach.hack.event.events.EventKeyPress;
-import bleach.hack.module.mods.*;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventKeyPress;
+import friend.capybara.module.mods.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -31,7 +32,6 @@ import java.util.stream.Collectors;
 
 public class ModuleManager {
     private static final List<Module> mods = Arrays.asList(
-        new AllahHaram(),
         new Ambience(),
         new AnchorAura(),
         new AntiChunkBan(),

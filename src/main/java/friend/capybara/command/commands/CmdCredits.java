@@ -15,14 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
 import java.util.Arrays;
 import java.util.List;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 
 public class CmdCredits extends Command {
 
@@ -44,12 +44,12 @@ public class CmdCredits extends Command {
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		List<String> credits = Arrays.asList(
-				"\u00A73-=\u00A7f+\u00A73=- " + BleachHack.CLIENT + " credits -=\u00A7f+\u00A73=-",
+				"\u00A73-=\u00A7f+\u00A73=- " + Capybara.CLIENT + " credits -=\u00A7f+\u00A73=-",
 				"\u00A73Bleach \u00A7fmade the base and like 60% of the modules",
 				"\u00A73epearl \u00A7fadded ~30 modules and changed client's UI",
 				"\u00a73ZimnyCat \u00A7fmade this skid of skid");
 		for (String s : credits)
-			BleachLogger.noPrefixMessage(s);
+			CapyLogger.noPrefixMessage(s);
 	}
 
 }

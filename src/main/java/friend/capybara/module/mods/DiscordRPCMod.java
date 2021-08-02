@@ -1,16 +1,16 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import org.apache.commons.lang3.RandomUtils;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.utils.DiscordRPCManager;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.utils.DiscordRPCManager;
+import friend.capybara.utils.file.FileHelper;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import net.minecraft.SharedConstants;
@@ -34,8 +34,8 @@ public class DiscordRPCMod extends Module {
 	}
 
 	public void init() {
-		String t1 = BleachFileHelper.readMiscSetting("discordRPCTopText");
-		String t2 = BleachFileHelper.readMiscSetting("discordRPCBottomText");
+		String t1 = FileHelper.readMiscSetting("discordRPCTopText");
+		String t2 = FileHelper.readMiscSetting("discordRPCBottomText");
 
 		if (t1 != null)
 			customText1 = t1;
@@ -45,7 +45,7 @@ public class DiscordRPCMod extends Module {
 
 	public void onEnable() {
 		tick = 0;
-		DiscordRPCManager.start("871466419777310753");
+		DiscordRPCManager.start("871729028757868564");
 
 		super.onEnable();
 	}
@@ -135,9 +135,8 @@ public class DiscordRPCMod extends Module {
 				break;
 			}
 
-			DiscordRPC.discordUpdatePresence(
-					new DiscordRichPresence.Builder(text2).setBigImage("monsterrat", "MonsterRat " + BleachHack.VERSION)
-							.setDetails(text1).setStartTimestamps(start).build());
+			DiscordRPC.discordUpdatePresence(new DiscordRichPresence.Builder(text2)
+					.setBigImage("capybara", Capybara.CLIENT).setDetails(text1).setStartTimestamps(start).build());
 		}
 
 		if (tick % 200 == 0) {

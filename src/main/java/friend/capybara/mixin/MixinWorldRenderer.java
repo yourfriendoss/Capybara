@@ -1,7 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventWorldRenderEntity;
 import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
@@ -13,6 +11,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventWorldRenderEntity;
+
 @Mixin(WorldRenderer.class)
 public class MixinWorldRenderer {
 
@@ -23,7 +24,7 @@ public class MixinWorldRenderer {
     private void renderEntity(Entity entity_1, double double_1, double double_2, double double_3, float float_1, MatrixStack matrixStack_1,
                               VertexConsumerProvider vertexConsumerProvider_1, CallbackInfo ci) {
         EventWorldRenderEntity event = new EventWorldRenderEntity(entity_1, matrixStack_1, vertexConsumerProvider_1, bufferBuilders);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) ci.cancel();
     }
 

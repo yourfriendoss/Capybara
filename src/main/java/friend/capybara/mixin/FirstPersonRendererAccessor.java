@@ -1,4 +1,4 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.item.ItemStack;

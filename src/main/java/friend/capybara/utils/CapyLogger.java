@@ -15,22 +15,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils;
+package friend.capybara.utils;
 
-import bleach.hack.BleachHack;
+import friend.capybara.Capybara;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-public class BleachLogger {
+public class CapyLogger {
 	static MinecraftClient client = MinecraftClient.getInstance();
 
 	public static void infoMessage(String s) {
 		try {
 			client.inGameHud.getChatHud().addMessage(new LiteralText(getBHText(Formatting.GRAY) + " " + s));
 		} catch (Exception e) {
-			System.out.println("[" + BleachHack.NAME + "] INFO: " + s);
+			System.out.println("[" + Capybara.NAME + "] INFO: " + s);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class BleachLogger {
 		try {
 			client.inGameHud.getChatHud().addMessage(new LiteralText(getBHText(Formatting.GRAY) + " " + s));
 		} catch (Exception e) {
-			System.out.println("[" + BleachHack.NAME + "] WARN: " + s);
+			System.out.println("[" + Capybara.NAME + "] WARN: " + s);
 		}
 	}
 
@@ -46,7 +46,7 @@ public class BleachLogger {
 		try {
 			client.inGameHud.getChatHud().addMessage(new LiteralText(getBHText(Formatting.GRAY) + " " + s));
 		} catch (Exception e) {
-			System.out.println("[" + BleachHack.NAME + "] ERROR: " + s);
+			System.out.println("[" + Capybara.NAME + "] ERROR: " + s);
 		}
 	}
 
@@ -70,11 +70,11 @@ public class BleachLogger {
 		try {
 			client.player.sendMessage(new LiteralText(getBHText(Formatting.GRAY) + " " + s), true);
 		} catch (Exception e) {
-			System.out.println("[" + BleachHack.NAME + "] INFO: " + s);
+			System.out.println("[" + Capybara.NAME + "] INFO: " + s);
 		}
 	}
 
 	private static String getBHText(Formatting color) {
-		return color + "\u00a7f[\u00A73" + BleachHack.NAME + "\u00a7f]";
+		return color + "\u00a7f[\u00A73" + Capybara.NAME + "\u00a7f]";
 	}
 }

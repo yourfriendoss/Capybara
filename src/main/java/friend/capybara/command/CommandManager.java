@@ -15,42 +15,42 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command;
+package friend.capybara.command;
 
 import java.util.Arrays;
 import java.util.List;
 
-import bleach.hack.command.commands.CmdBind;
-import bleach.hack.command.commands.CmdCI;
-import bleach.hack.command.commands.CmdCleanChat;
-import bleach.hack.command.commands.CmdCredits;
-import bleach.hack.command.commands.CmdCustomChat;
-import bleach.hack.command.commands.CmdDrawn;
-import bleach.hack.command.commands.CmdDupe;
-import bleach.hack.command.commands.CmdEnchant;
-import bleach.hack.command.commands.CmdEntityStats;
-import bleach.hack.command.commands.CmdFakeText;
-import bleach.hack.command.commands.CmdFriends;
-import bleach.hack.command.commands.CmdGamemode;
-import bleach.hack.command.commands.CmdGive;
-import bleach.hack.command.commands.CmdGuiReset;
-import bleach.hack.command.commands.CmdHelp;
-import bleach.hack.command.commands.CmdLogin;
-import bleach.hack.command.commands.CmdNBT;
-import bleach.hack.command.commands.CmdNotebot;
-import bleach.hack.command.commands.CmdNuker;
-import bleach.hack.command.commands.CmdOpenFolder;
-import bleach.hack.command.commands.CmdPeek;
-import bleach.hack.command.commands.CmdPrefix;
-import bleach.hack.command.commands.CmdRbook;
-import bleach.hack.command.commands.CmdRename;
-import bleach.hack.command.commands.CmdRpc;
-import bleach.hack.command.commands.CmdSearch;
-import bleach.hack.command.commands.CmdSetting;
-import bleach.hack.command.commands.CmdSkull;
-import bleach.hack.command.commands.CmdToggle;
-import bleach.hack.command.commands.CmdXray;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.commands.CmdBind;
+import friend.capybara.command.commands.CmdCI;
+import friend.capybara.command.commands.CmdCleanChat;
+import friend.capybara.command.commands.CmdCredits;
+import friend.capybara.command.commands.CmdCustomChat;
+import friend.capybara.command.commands.CmdDrawn;
+import friend.capybara.command.commands.CmdDupe;
+import friend.capybara.command.commands.CmdEnchant;
+import friend.capybara.command.commands.CmdEntityStats;
+import friend.capybara.command.commands.CmdFakeText;
+import friend.capybara.command.commands.CmdFriends;
+import friend.capybara.command.commands.CmdGamemode;
+import friend.capybara.command.commands.CmdGive;
+import friend.capybara.command.commands.CmdGuiReset;
+import friend.capybara.command.commands.CmdHelp;
+import friend.capybara.command.commands.CmdLogin;
+import friend.capybara.command.commands.CmdNBT;
+import friend.capybara.command.commands.CmdNotebot;
+import friend.capybara.command.commands.CmdNuker;
+import friend.capybara.command.commands.CmdOpenFolder;
+import friend.capybara.command.commands.CmdPeek;
+import friend.capybara.command.commands.CmdPrefix;
+import friend.capybara.command.commands.CmdRbook;
+import friend.capybara.command.commands.CmdRename;
+import friend.capybara.command.commands.CmdRpc;
+import friend.capybara.command.commands.CmdSearch;
+import friend.capybara.command.commands.CmdSetting;
+import friend.capybara.command.commands.CmdSkull;
+import friend.capybara.command.commands.CmdToggle;
+import friend.capybara.command.commands.CmdXray;
+import friend.capybara.utils.CapyLogger;
 
 public class CommandManager {
 
@@ -76,12 +76,12 @@ public class CommandManager {
 					c.onCommand(command, args.split(" "));
 				} catch (Exception e) {
 					e.printStackTrace();
-					BleachLogger.errorMessage("Invalid Syntax!");
-					BleachLogger.infoMessage(c.getSyntax());
+					CapyLogger.errorMessage("Invalid Syntax!");
+					CapyLogger.infoMessage(c.getSyntax());
 				}
 				return;
 			}
 		}
-		BleachLogger.errorMessage("Command Not Found, Try \"" + Command.PREFIX + "help\"");
+		CapyLogger.errorMessage("Command Not Found, Try \"" + Command.PREFIX + "help\"");
 	}
 }

@@ -15,15 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.EntityControl;
 import net.minecraft.entity.passive.LlamaEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.EntityControl;
 
 @Mixin(LlamaEntity.class)
 public abstract class MixinLlamaEntity {

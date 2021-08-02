@@ -15,18 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.Xray;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileMang;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.List;
+
+import friend.capybara.command.Command;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.Xray;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileManager;
 
 public class CmdXray extends Command {
     //brb stealing your nuker command
@@ -47,9 +48,9 @@ public class CmdXray extends Command {
 
     @Override
     public void onCommand(String command, String[] args) throws Exception {
-        BleachFileMang.createFile("xrayblocks.txt");
+        FileManager.createFile("xrayblocks.txt");
 
-        List<String> lines = BleachFileMang.readFileLines("xrayblocks.txt");
+        List<String> lines = FileManager.readFileLines("xrayblocks.txt");
         lines.removeIf(s -> s.isEmpty());
         System.out.println(lines);
 
@@ -59,21 +60,21 @@ public class CmdXray extends Command {
 
             if (args[0].equalsIgnoreCase("add")) {
                 if (Registry.BLOCK.get(new Identifier(block)) == Blocks.AIR) {
-                    BleachLogger.errorMessage("Invalid Block: " + args[1]);
+                    CapyLogger.errorMessage("Invalid Block: " + args[1]);
                     return;
                 } else if (lines.contains(block)) {
-                    BleachLogger.errorMessage("Block is already added!");
+                    CapyLogger.errorMessage("Block is already added!");
                     return;
                 }
 
-                BleachFileMang.appendFile(block, "xrayblocks.txt");
+                FileManager.appendFile(block, "xrayblocks.txt");
 
                 if (xray.isToggled()) {
                     xray.toggle();
                     xray.toggle();
                 }
 
-                BleachLogger.infoMessage("Added Block: " + args[1]);
+                CapyLogger.infoMessage("Added Block: " + args[1]);
 
             } else if (args[0].equalsIgnoreCase("remove")) {
                 if (lines.contains(block)) {
@@ -82,29 +83,29 @@ public class CmdXray extends Command {
                     String s = "";
                     for (String s1 : lines) s += s1 + "\n";
 
-                    BleachFileMang.createEmptyFile("xrayblocks.txt");
-                    BleachFileMang.appendFile(s, "xrayblocks.txt");
+                    FileManager.createEmptyFile("xrayblocks.txt");
+                    FileManager.appendFile(s, "xrayblocks.txt");
 
                     if (xray.isToggled()) {
                         xray.toggle();
                         xray.toggle();
                     }
 
-                    BleachLogger.infoMessage("Removed Block: " + args[1]);
+                    CapyLogger.infoMessage("Removed Block: " + args[1]);
                 } else {
-                    BleachLogger.errorMessage("Block Not In List: " + args[1]);
+                    CapyLogger.errorMessage("Block Not In List: " + args[1]);
                 }
             }
         } else if (args[0].equalsIgnoreCase("clear")) {
-            BleachFileMang.createEmptyFile("xrayblocks.txt");
-            BleachLogger.infoMessage("Cleared Xray Blocks");
+            FileManager.createEmptyFile("xrayblocks.txt");
+            CapyLogger.infoMessage("Cleared Xray Blocks");
         } else if (args[0].equalsIgnoreCase("list")) {
             String s = "";
             for (String l : lines) {
                 s += "\n\u00a76" + l;
             }
 
-            BleachLogger.infoMessage(s);
+            CapyLogger.infoMessage(s);
         }
     }
 }

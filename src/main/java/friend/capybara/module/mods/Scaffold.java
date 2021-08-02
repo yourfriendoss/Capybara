@@ -15,20 +15,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingColor;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.setting.other.SettingRotate;
-import bleach.hack.utils.RenderUtils;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingColor;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.setting.other.SettingRotate;
+import friend.capybara.utils.RenderUtils;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.math.BlockPos;

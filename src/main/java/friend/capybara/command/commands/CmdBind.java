@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.client.util.InputUtil;
 
 public class CmdBind extends Command {
@@ -51,7 +51,7 @@ public class CmdBind extends Command {
                 }
             }
 
-            BleachLogger.infoMessage("Cleared " + c + " Binds");
+            CapyLogger.infoMessage("Cleared " + c + " Binds");
         } else if (args.length >= 2 && (args.length >= 3 || !args[1].equalsIgnoreCase("set"))) {
             for (Module m : ModuleManager.getModules()) {
                 if (m.getName().equalsIgnoreCase(args[1])) {
@@ -66,37 +66,37 @@ public class CmdBind extends Command {
                                 try {
                                     key = InputUtil.fromTranslationKey("key.keyboard." + args[2].toLowerCase().replaceFirst("right", "right.")).getCode();
                                 } catch (IllegalArgumentException e1) {
-                                    BleachLogger.errorMessage("Unknown key: " + args[2] + " / " + args[2].toLowerCase().replaceFirst("right", "right."));
+                                    CapyLogger.errorMessage("Unknown key: " + args[2] + " / " + args[2].toLowerCase().replaceFirst("right", "right."));
                                     return;
                                 }
                             } else if (args[2].toLowerCase().startsWith("r")) {
                                 try {
                                     key = InputUtil.fromTranslationKey("key.keyboard." + args[2].toLowerCase().replaceFirst("r", "right.")).getCode();
                                 } catch (IllegalArgumentException e1) {
-                                    BleachLogger.errorMessage("Unknown key: " + args[2] + " / " + args[2].toLowerCase().replaceFirst("r", "right."));
+                                    CapyLogger.errorMessage("Unknown key: " + args[2] + " / " + args[2].toLowerCase().replaceFirst("r", "right."));
                                     return;
                                 }
                             } else {
-                                BleachLogger.errorMessage("Unknown key: " + args[2]);
+                                CapyLogger.errorMessage("Unknown key: " + args[2]);
                                 return;
                             }
                         }
 
                         m.setKey(key);
-                        BleachLogger.infoMessage("Bound " + m.getName() + " To " + args[2] + " (KEY" + key + ")");
+                        CapyLogger.infoMessage("Bound " + m.getName() + " To " + args[2] + " (KEY" + key + ")");
                     } else if (args[0].equalsIgnoreCase("del")) {
                         m.setKey(Module.KEY_UNBOUND);
-                        BleachLogger.infoMessage("Removed Bind For " + m.getName());
+                        CapyLogger.infoMessage("Removed Bind For " + m.getName());
                     }
 
                     return;
                 }
             }
 
-            BleachLogger.errorMessage("Could Not Find Module \"" + args[1] + "\"");
+            CapyLogger.errorMessage("Could Not Find Module \"" + args[1] + "\"");
         } else {
-            BleachLogger.errorMessage("Invalid Syntax!");
-            BleachLogger.infoMessage(getSyntax());
+            CapyLogger.errorMessage("Invalid Syntax!");
+            CapyLogger.infoMessage(getSyntax());
         }
     }
 

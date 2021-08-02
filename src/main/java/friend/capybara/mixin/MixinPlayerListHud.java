@@ -1,11 +1,12 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ExtraTab;
 import net.minecraft.client.gui.hud.PlayerListHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ExtraTab;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 
 public class CmdFakeText extends Command {
     @Override
@@ -17,6 +17,6 @@ public class CmdFakeText extends Command {
     public void onCommand(String command, String[] args) throws Exception {
         String msg = "";
         for (int nigga = 0; nigga < args.length; nigga++) msg += args[nigga].replace("&", "\u00A7") + " ";
-        BleachLogger.noPrefixMessage(msg);
+        CapyLogger.noPrefixMessage(msg);
     }
 }

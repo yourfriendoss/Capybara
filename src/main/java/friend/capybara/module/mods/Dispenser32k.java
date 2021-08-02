@@ -1,16 +1,17 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.collect.Streams;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShulkerBoxBlock;
@@ -88,11 +89,11 @@ public class Dispenser32k extends Module {
             else if (item instanceof BlockItem) block = i;
         }
 
-        if (hopper == -1) BleachLogger.errorMessage("Missing Hopper");
-        else if (dispenser == -1) BleachLogger.errorMessage("Missing Dispenser");
-        else if (redstone == -1) BleachLogger.errorMessage("Missing Redstone Block");
-        else if (shulker == -1) BleachLogger.errorMessage("Missing Shulker");
-        else if (block == -1) BleachLogger.errorMessage("Missing Generic Block");
+        if (hopper == -1) CapyLogger.errorMessage("Missing Hopper");
+        else if (dispenser == -1) CapyLogger.errorMessage("Missing Dispenser");
+        else if (redstone == -1) CapyLogger.errorMessage("Missing Redstone Block");
+        else if (shulker == -1) CapyLogger.errorMessage("Missing Shulker");
+        else if (block == -1) CapyLogger.errorMessage("Missing Generic Block");
 
         if (hopper == -1 || dispenser == -1 || redstone == -1 || shulker == -1 || block == -1) {
             setToggled(false);
@@ -114,7 +115,7 @@ public class Dispenser32k extends Module {
                     || !WorldUtils.isBlockEmpty(pos.add(0, 1, 0))
                     || !WorldUtils.isBlockEmpty(pos.add(0, 2, 0))
                     || !WorldUtils.isBlockEmpty(pos.add(rot[0], 1, rot[1]))) {
-                BleachLogger.errorMessage("Unable to place 32k");
+                CapyLogger.errorMessage("Unable to place 32k");
                 setToggled(false);
                 return;
             }
@@ -156,7 +157,7 @@ public class Dispenser32k extends Module {
             }
         }
 
-        BleachLogger.errorMessage("Unable to place 32k");
+        CapyLogger.errorMessage("Unable to place 32k");
         setToggled(false);
     }
 
@@ -258,7 +259,7 @@ public class Dispenser32k extends Module {
             Entity target = null;
 
             List<Entity> players = Streams.stream(mc.world.getEntities())
-                    .filter((e) -> e instanceof PlayerEntity && e != mc.player && !(BleachHack.friendMang.has(e.getName().asString())))
+                    .filter((e) -> e instanceof PlayerEntity && e != mc.player && !(Capybara.friendMang.has(e.getName().asString())))
                     .sorted((a, b) -> Double.compare(a.squaredDistanceTo(mc.player), b.squaredDistanceTo(mc.player)))
                     .collect(Collectors.toList());
 

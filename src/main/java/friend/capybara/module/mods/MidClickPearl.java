@@ -1,11 +1,12 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.Finder;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.Finder;
 import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 
@@ -17,7 +18,7 @@ public class MidClickPearl extends Module {
         if (!mc.options.keyPickItem.isPressed()) return;
         Integer pearlSlot = Finder.find(Items.ENDER_PEARL, true);
         if (pearlSlot == null) {
-            BleachLogger.infoMessage("No ender pearls found in hotbar!");
+            CapyLogger.infoMessage("No ender pearls found in hotbar!");
             return;
         }
         int slot = mc.player.inventory.selectedSlot;

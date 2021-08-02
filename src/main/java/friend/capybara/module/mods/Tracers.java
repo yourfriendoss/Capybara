@@ -15,18 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingColor;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.EntityUtils;
-import bleach.hack.utils.RenderUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingColor;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.EntityUtils;
+import friend.capybara.utils.RenderUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -70,7 +71,7 @@ public class Tracers extends Module {
             float[] col = null;
 
             if (e instanceof PlayerEntity && e != mc.player && e != mc.cameraEntity && getSetting(0).asToggle().state) {
-                col = getSetting(0).asToggle().getChild(BleachHack.friendMang.has(e.getName().asString()) ? 1 : 0).asColor().getRGBFloat();
+                col = getSetting(0).asToggle().getChild(Capybara.friendMang.has(e.getName().asString()) ? 1 : 0).asColor().getRGBFloat();
             } else if (e instanceof Monster && getSetting(1).asToggle().state) {
                 col = getSetting(1).asToggle().getChild(0).asColor().getRGBFloat();
             } else if (EntityUtils.isAnimal(e) && getSetting(2).asToggle().state) {

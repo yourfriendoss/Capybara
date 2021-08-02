@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "bleach.hack.mixin",
+  "package": "friend.capybara.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
@@ -42,7 +42,6 @@
     "MixinSignBlockEntityRenderer",
     "MixinSkyProperties",
     "MixinSoundSystem",
-    "MixinTextRenderer",
     "MixinNoToolCooldown",
     "MixinWorldRenderer"
   ],

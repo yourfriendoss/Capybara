@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,17 +47,17 @@ import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.commands.CmdEntityStats;
-import bleach.hack.event.events.EventEntityRender;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.WorldRenderUtils;
-import bleach.hack.utils.EntityUtils;
+import friend.capybara.Capybara;
+import friend.capybara.command.commands.CmdEntityStats;
+import friend.capybara.event.events.EventEntityRender;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.EntityUtils;
+import friend.capybara.utils.WorldRenderUtils;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.enchantment.Enchantment;
@@ -196,7 +196,7 @@ public class Nametags extends Module {
 			if (e instanceof PlayerEntity && getSetting(2).asToggle().state) {
 				scale = Math.max(getSetting(2).asToggle().getChild(0).asSlider().getValue() * (mc.cameraEntity.distanceTo(e) / 20), 1);
 
-				addNameHealthLine(lines, e, BleachHack.friendMang.has(e.getName().getString()) ? Formatting.GREEN : Formatting.WHITE,
+				addNameHealthLine(lines, e, Capybara.friendMang.has(e.getName().getString()) ? Formatting.GREEN : Formatting.WHITE,
 						getSetting(2).asToggle().getChild(1).asToggle().state,
 						getSetting(2).asToggle().getChild(2).asToggle().state,
 						getSetting(2).asToggle().getChild(3).asToggle().state);

@@ -26,6 +26,7 @@ dependencies {
 	//modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.ZeroMemes:Alpine:1.9"
 	modImplementation 'com.github.Vatuu:discord-rpc:1.6.2'
+
 	include 'com.github.Vatuu:discord-rpc:1.6.2'
 	include 'com.github.ZeroMemes:Alpine:1.9'
 

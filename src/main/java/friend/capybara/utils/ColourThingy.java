@@ -1,7 +1,7 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ColourChooser;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ColourChooser;
 
 public class ColourThingy {
     public static int guiColour() {

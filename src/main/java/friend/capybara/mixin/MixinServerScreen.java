@@ -15,10 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.gui.CleanUpScreen;
-import bleach.hack.gui.ServerScraperScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -28,6 +26,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import friend.capybara.gui.CleanUpScreen;
+import friend.capybara.gui.ServerScraperScreen;
 
 @Mixin(MultiplayerScreen.class)
 public class MixinServerScreen extends Screen {

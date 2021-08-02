@@ -1,9 +1,9 @@
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileHelper;
 
 public class CmdFriends extends Command {
 
@@ -26,48 +26,48 @@ public class CmdFriends extends Command {
     public void onCommand(String command, String[] args) throws Exception {
         if (args[0].equalsIgnoreCase("add")) {
             if (args.length < 2) {
-                BleachLogger.errorMessage("No username selected");
-                BleachLogger.errorMessage(getSyntax());
+                CapyLogger.errorMessage("No username selected");
+                CapyLogger.errorMessage(getSyntax());
                 return;
             }
 
-            BleachHack.friendMang.add(args[1]);
-            BleachLogger.infoMessage("Added \"" + args[1] + "\" to the friend list");
+            Capybara.friendMang.add(args[1]);
+            CapyLogger.infoMessage("Added \"" + args[1] + "\" to the friend list");
         } else if (args[0].equalsIgnoreCase("del")) {
             if (args.length < 2) {
-                BleachLogger.errorMessage("No username selected");
-                BleachLogger.errorMessage(getSyntax());
+                CapyLogger.errorMessage("No username selected");
+                CapyLogger.errorMessage(getSyntax());
                 return;
             }
 
-            BleachHack.friendMang.remove(args[1].toLowerCase());
-            BleachLogger.infoMessage("Deleted \"" + args[1] + "\" from the friend list");
+            Capybara.friendMang.remove(args[1].toLowerCase());
+            CapyLogger.infoMessage("Deleted \"" + args[1] + "\" from the friend list");
         } else if (args[0].equalsIgnoreCase("remove")) {
             if (args.length < 2) {
-                BleachLogger.errorMessage("No username selected");
-                BleachLogger.errorMessage(getSyntax());
+                CapyLogger.errorMessage("No username selected");
+                CapyLogger.errorMessage(getSyntax());
                 return;
             }
 
-            BleachHack.friendMang.remove(args[1].toLowerCase());
-            BleachLogger.infoMessage("Removed \"" + args[1] + "\" from the friend list");
+            Capybara.friendMang.remove(args[1].toLowerCase());
+            CapyLogger.infoMessage("Removed \"" + args[1] + "\" from the friend list");
         } else if (args[0].equalsIgnoreCase("list")) {
             String text = "";
 
-            for (String f : BleachHack.friendMang.getFriends()) {
+            for (String f : Capybara.friendMang.getFriends()) {
                 text += "\n\u00a72" + f;
             }
 
-            BleachLogger.infoMessage(text);
+            CapyLogger.infoMessage(text);
         } else if (args[0].equalsIgnoreCase("clear")) {
-            BleachHack.friendMang.getFriends().clear();
+            Capybara.friendMang.getFriends().clear();
 
-            BleachLogger.infoMessage("Cleared Friend list");
+            CapyLogger.infoMessage("Cleared Friend list");
         } else {
-            BleachLogger.errorMessage("Invalid Syntax!\n" + getSyntax());
+            CapyLogger.errorMessage("Invalid Syntax!\n" + getSyntax());
         }
 
-        BleachFileHelper.SCHEDULE_SAVE_FRIENDS = true;
+        FileHelper.SCHEDULE_SAVE_FRIENDS = true;
     }
 
 }

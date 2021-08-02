@@ -1,10 +1,10 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
 //insanely hard to code! mostly everything is stolen from bleach's step module

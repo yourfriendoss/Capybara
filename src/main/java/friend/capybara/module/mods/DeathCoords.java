@@ -1,11 +1,12 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.util.math.Vec3d;
 
 public class DeathCoords extends Module {
@@ -22,9 +23,9 @@ public class DeathCoords extends Module {
         if (mc.player.isDead() && !sent) {
             Vec3d pos = mc.player.getPos();
             String coords = Math.round(pos.x) + "\u00a7f/\u00A73" + Math.round(pos.y) + "\u00a7f/\u00A73" + Math.round(pos.z);
-            BleachLogger.infoMessage("Death coords [\u00a73" + coords + "\u00a7f]");
+            CapyLogger.infoMessage("Death coords [\u00a73" + coords + "\u00a7f]");
             if (getSetting(0).asToggle().state)
-                BleachLogger.infoMessage("Dimension [\u00A73" + mc.world.getRegistryKey().getValue().getPath().toLowerCase() + "\u00a7f]");
+                CapyLogger.infoMessage("Dimension [\u00A73" + mc.world.getRegistryKey().getValue().getPath().toLowerCase() + "\u00a7f]");
             sent = true;
         } else if (!mc.player.isDead()) sent = false;
     }

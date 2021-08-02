@@ -1,10 +1,10 @@
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.DiscordRPCMod;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.command.Command;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.DiscordRPCMod;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileHelper;
 
 public class CmdRpc extends Command {
 
@@ -26,15 +26,15 @@ public class CmdRpc extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         if (args.length != 2) {
-            BleachLogger.errorMessage(getSyntax());
+            CapyLogger.errorMessage(getSyntax());
         }
 
         ((DiscordRPCMod) ModuleManager.getModule(DiscordRPCMod.class)).setText(args[0], args[1]);
 
-        BleachLogger.infoMessage("Set RPC to " + args[0] + ", " + args[1]);
+        CapyLogger.infoMessage("Set RPC to " + args[0] + ", " + args[1]);
 
-        BleachFileHelper.saveMiscSetting("discordRPCTopText", args[0]);
-        BleachFileHelper.saveMiscSetting("discordRPCBottomText", args[1]);
+        FileHelper.saveMiscSetting("discordRPCTopText", args[0]);
+        FileHelper.saveMiscSetting("discordRPCBottomText", args[1]);
     }
 
 }

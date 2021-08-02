@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.event.events;
+package friend.capybara.event.events;
 
-import bleach.hack.event.Event;
+import friend.capybara.event.Event;
 import net.minecraft.entity.Entity;
 
 public class EventEntityRender extends Event {

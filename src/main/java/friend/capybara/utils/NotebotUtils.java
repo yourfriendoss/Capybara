@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,7 +32,7 @@ import java.util.zip.ZipFile;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -46,14 +46,14 @@ public class NotebotUtils {
 		try {
 			FileUtils.copyURLToFile(
 					new URL("https://github.com/BleachDrinker420/bleachhack-1.14/raw/master/online/notebot/songs.zip"),
-					BleachFileMang.getDir().resolve("notebot").resolve("songs.zip").toFile());
-			ZipFile zip = new ZipFile(BleachFileMang.getDir().resolve("notebot").resolve("songs.zip").toFile());
+					FileManager.getDir().resolve("notebot").resolve("songs.zip").toFile());
+			ZipFile zip = new ZipFile(FileManager.getDir().resolve("notebot").resolve("songs.zip").toFile());
 			Enumeration<? extends ZipEntry> files = zip.entries();
 			int count = 0;
 			while (files.hasMoreElements()) {
 				count++;
 				ZipEntry file = files.nextElement();
-				File outFile = BleachFileMang.getDir().resolve("notebot").resolve(file.getName()).toFile();
+				File outFile = FileManager.getDir().resolve("notebot").resolve(file.getName()).toFile();
 				if (file.isDirectory())
 					outFile.mkdirs();
 				else {
@@ -66,13 +66,13 @@ public class NotebotUtils {
 				}
 			}
 			zip.close();
-			Files.deleteIfExists(BleachFileMang.getDir().resolve("notebot").resolve("songs.zip"));
+			Files.deleteIfExists(FileManager.getDir().resolve("notebot").resolve("songs.zip"));
 
 			if (log)
-				BleachLogger.infoMessage("Downloaded " + count + " Songs");
+				CapyLogger.infoMessage("Downloaded " + count + " Songs");
 		} catch (Exception e) {
 			if (log)
-				BleachLogger.warningMessage("Error Downloading Songs... " + e);
+				CapyLogger.warningMessage("Error Downloading Songs... " + e);
 			e.printStackTrace();
 		}
 	}

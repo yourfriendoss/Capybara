@@ -15,10 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.StringNbtReader;
@@ -43,29 +43,29 @@ public class CmdNBT extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         if (args[0].isEmpty()) {
-            BleachLogger.errorMessage("Invalid Syntax!");
-            BleachLogger.infoMessage(getSyntax());
+            CapyLogger.errorMessage("Invalid Syntax!");
+            CapyLogger.infoMessage(getSyntax());
             return;
         }
         ItemStack item = mc.player.inventory.getMainHandStack();
 
         if (args[0].equalsIgnoreCase("get")) {
-            BleachLogger.infoMessage("\u00a76\u00a7lNBT:\n" + item.getTag() + "");
+            CapyLogger.infoMessage("\u00a76\u00a7lNBT:\n" + item.getTag() + "");
         } else if (args[0].equalsIgnoreCase("copy")) {
             mc.keyboard.setClipboard(item.getTag() + "");
-            BleachLogger.infoMessage("\u00a76Copied\n\u00a7f" + (item.getTag() + "\n") + "\u00a76to clipboard.");
+            CapyLogger.infoMessage("\u00a76Copied\n\u00a7f" + (item.getTag() + "\n") + "\u00a76to clipboard.");
         } else if (args[0].equalsIgnoreCase("set")) {
             try {
                 if (args[1].isEmpty()) {
-                    BleachLogger.errorMessage("Invalid Syntax!");
-                    BleachLogger.infoMessage(getSyntax());
+                    CapyLogger.errorMessage("Invalid Syntax!");
+                    CapyLogger.infoMessage(getSyntax());
                     return;
                 }
                 item.setTag(StringNbtReader.parse(args[1]));
-                BleachLogger.infoMessage("\u00a76Set NBT of " + item.getItem().getName() + "to\n\u00a7f" + (item.getTag()));
+                CapyLogger.infoMessage("\u00a76Set NBT of " + item.getItem().getName() + "to\n\u00a7f" + (item.getTag()));
             } catch (Exception e) {
-                BleachLogger.errorMessage("Invalid Syntax!");
-                BleachLogger.infoMessage(getSyntax());
+                CapyLogger.errorMessage("Invalid Syntax!");
+                CapyLogger.infoMessage(getSyntax());
             }
         } else if (args[0].equalsIgnoreCase("wipe")) {
             item.setTag(new CompoundTag());

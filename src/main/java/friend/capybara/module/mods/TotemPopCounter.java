@@ -1,16 +1,16 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.HashMap;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
@@ -37,7 +37,7 @@ public class TotemPopCounter extends Module {
 					&& mc.player.distanceTo(p) < getSetting(2).asSlider().getValue()) {
 				String name = p.getDisplayName().getString();
 				int popNum = pops.get(name);
-				BleachLogger
+				CapyLogger
 						.infoMessage("\u00a73" + name + " \u00a7fpopped \u00a73" + popNum + " \u00a7ftotems and died");
 				chatMsg(name + " popped " + popNum + " totems and died", name);
 				pops.remove(name);
@@ -56,7 +56,7 @@ public class TotemPopCounter extends Module {
 				String name = p.getEntity(mc.world).getDisplayName().getString();
 				int popNum = pops.containsKey(name) ? pops.get(name) + 1 : 1;
 				pops.put(name, popNum);
-				BleachLogger.infoMessage("\u00a73" + name + " \u00a7fpopped \u00a73" + popNum + " \u00a7ftotem"
+				CapyLogger.infoMessage("\u00a73" + name + " \u00a7fpopped \u00a73" + popNum + " \u00a7ftotem"
 						+ (popNum != 1 ? "s" : ""));
 				chatMsg(name + " popped " + popNum + " totem" + (popNum != 1 ? "s" : ""), name);
 			}

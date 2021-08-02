@@ -15,9 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
@@ -25,6 +24,8 @@ import net.minecraft.nbt.StringNbtReader;
 
 import java.util.Base64;
 import java.util.UUID;
+
+import friend.capybara.command.Command;
 
 public class CmdSkull extends Command {
 

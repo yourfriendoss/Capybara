@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui.clickgui;
+package friend.capybara.gui.clickgui;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,18 +28,18 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.gui.clickgui.modulewindow.ClickGuiWindow;
-import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
-import bleach.hack.gui.window.AbstractWindowScreen;
-import bleach.hack.gui.window.Window;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.utils.ColourThingy;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.gui.clickgui.modulewindow.ClickGuiWindow;
+import friend.capybara.gui.clickgui.modulewindow.ModuleWindow;
+import friend.capybara.gui.window.AbstractWindowScreen;
+import friend.capybara.gui.window.Window;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.utils.ColourThingy;
+import friend.capybara.utils.file.FileHelper;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
@@ -61,7 +61,7 @@ public class ClickGuiScreen extends AbstractWindowScreen {
 	}
 
 	public void init() {
-		searchField = new TextFieldWidget(textRenderer, 2, 14, 100, 12,
+		searchField = new TextFieldWidget(textRenderer, 4, 16, 100, 12,
 				LiteralText.EMPTY /* @LasnikProgram is author lol */);
 		searchField.visible = false;
 		searchField.setMaxLength(20);
@@ -119,13 +119,14 @@ public class ClickGuiScreen extends AbstractWindowScreen {
 	}
 
 	public void render(MatrixStack matrix, int mX, int mY, float float_1) {
-		BleachFileHelper.SCHEDULE_SAVE_CLICKGUI = true;
+		FileHelper.SCHEDULE_SAVE_CLICKGUI = true;
 
 		searchField.visible = ModuleManager.getModule(ClickGui.class).getSetting(1).asToggle().state;
 
 		this.renderBackground(matrix);
-		String watermark = BleachHack.NAME + " " + BleachHack.VERSION;
-		textRenderer.drawWithShadow(matrix, watermark, 1, 1, ColourThingy.guiColour());
+
+		textRenderer.drawWithShadow(matrix, Capybara.CLIENT, 4, 4, ColourThingy.guiColour());
+
 		if (ModuleManager.getModule(ClickGui.class).getSetting(2).asToggle().state) {
 			textRenderer.drawWithShadow(matrix,
 					"Current prefix is: \"" + Command.PREFIX + "\" (" + Command.PREFIX + "help)", 2, height - 20,

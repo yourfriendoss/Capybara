@@ -1,10 +1,11 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventEntityRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventEntityRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BedItem;
 import net.minecraft.item.Item;
@@ -27,7 +28,7 @@ public class TerroristNotifier extends Module {
         if (terrorist != mc.player && checkHands(terrorist)
                 && !terrorists.contains(terrorist.getName().asString())) {
             terrorists.add(terrorist.getName().asString());
-            BleachLogger.infoMessage("Terrorist found [\u00a73" + terrorist.getName().asString() + "\u00a7f]");
+            CapyLogger.infoMessage("Terrorist found [\u00a73" + terrorist.getName().asString() + "\u00a7f]");
         }
     }
     private boolean checkHands(PlayerEntity nigga) {

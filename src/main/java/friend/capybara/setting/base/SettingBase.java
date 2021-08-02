@@ -15,11 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.setting.base;
+package friend.capybara.setting.base;
 
-import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
-import bleach.hack.setting.other.SettingRotate;
 import com.google.gson.JsonElement;
+
+import friend.capybara.gui.clickgui.modulewindow.ModuleWindow;
+import friend.capybara.setting.other.SettingRotate;
 import net.minecraft.client.util.math.MatrixStack;
 import org.apache.commons.lang3.tuple.Triple;
 

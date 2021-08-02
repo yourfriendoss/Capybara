@@ -1,13 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.command.Command;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.command.Command;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
@@ -30,7 +31,7 @@ public class FastReply extends Module {
             if (msg.startsWith(p.getProfile().getName().toLowerCase() + " whispers")
                     || msg.startsWith("[" + p.getProfile().getName().toLowerCase() + " ->")) {
                 name = p.getProfile().getName();
-                if (getSetting(0).asToggle().state) BleachLogger.infoMessage("The next message will be sent to " + p.getProfile().getName());
+                if (getSetting(0).asToggle().state) CapyLogger.infoMessage("The next message will be sent to " + p.getProfile().getName());
             }
         }
     }

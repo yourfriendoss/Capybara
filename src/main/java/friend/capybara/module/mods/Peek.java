@@ -1,15 +1,16 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventDrawTooltip;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.FabricReflect;
-import bleach.hack.utils.ItemContentUtils;
 import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventDrawTooltip;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.FabricReflect;
+import friend.capybara.utils.ItemContentUtils;
 import net.minecraft.block.*;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;

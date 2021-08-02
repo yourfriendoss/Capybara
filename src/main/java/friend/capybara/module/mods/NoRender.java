@@ -1,14 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventParticle;
-import bleach.hack.event.events.EventSignBlockEntityRender;
-import bleach.hack.event.events.EventSoundPlay;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
+import friend.capybara.event.events.EventParticle;
+import friend.capybara.event.events.EventSignBlockEntityRender;
+import friend.capybara.event.events.EventSoundPlay;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
 import net.minecraft.client.particle.ElderGuardianAppearanceParticle;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.particle.ParticleTypes;

@@ -15,13 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui.clickgui.modulewindow;
+package friend.capybara.gui.clickgui.modulewindow;
 
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.setting.base.SettingBase;
-import bleach.hack.utils.ColourThingy;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -31,6 +26,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import org.apache.commons.lang3.tuple.Triple;
 import org.lwjgl.glfw.GLFW;
+
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.setting.base.SettingBase;
+import friend.capybara.utils.ColourThingy;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

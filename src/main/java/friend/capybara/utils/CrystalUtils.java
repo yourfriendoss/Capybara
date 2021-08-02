@@ -1,11 +1,11 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.CrystalAura;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.CrystalAura;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;

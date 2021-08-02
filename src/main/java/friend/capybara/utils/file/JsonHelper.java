@@ -1,4 +1,4 @@
-package bleach.hack.utils.file;
+package friend.capybara.utils.file;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
-public class BleachJsonHelper {
+public class JsonHelper {
 
 	private static final Gson jsonWriter = new GsonBuilder().setPrettyPrinting().create();
 
@@ -18,10 +18,10 @@ public class BleachJsonHelper {
 		JsonObject file = null;
 		boolean overwrite = false;
 
-		if (!BleachFileMang.fileExists(path)) {
+		if (!FileManager.fileExists(path)) {
 			overwrite = true;
 		} else {
-			List<String> lines = BleachFileMang.readFileLines(path);
+			List<String> lines = FileManager.readFileLines(path);
 
 			if (lines.isEmpty()) {
 				overwrite = true;
@@ -37,22 +37,22 @@ public class BleachJsonHelper {
 			}
 		}
 
-		BleachFileMang.createEmptyFile(path);
+		FileManager.createEmptyFile(path);
 		if (overwrite) {
 			JsonObject mainJO = new JsonObject();
 			mainJO.add(key, element);
 
-			BleachFileMang.appendFile(jsonWriter.toJson(mainJO), path);
+			FileManager.appendFile(jsonWriter.toJson(mainJO), path);
 		} else {
 			file.add(key, element);
 
-			BleachFileMang.appendFile(jsonWriter.toJson(file), path);
+			FileManager.appendFile(jsonWriter.toJson(file), path);
 		}
 	}
 
 	public static void setJsonFile(JsonObject element, String... path) {
-		BleachFileMang.createEmptyFile(path);
-		BleachFileMang.appendFile(jsonWriter.toJson(element), path);
+		FileManager.createEmptyFile(path);
+		FileManager.appendFile(jsonWriter.toJson(element), path);
 	}
 
 	public static JsonElement readJsonElement(String key, String... path) {
@@ -69,7 +69,7 @@ public class BleachJsonHelper {
 	}
 
 	public static JsonObject readJsonFile(String... path) {
-		List<String> lines = BleachFileMang.readFileLines(path);
+		List<String> lines = FileManager.readFileLines(path);
 
 		if (lines.isEmpty())
 			return null;

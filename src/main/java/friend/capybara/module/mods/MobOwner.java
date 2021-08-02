@@ -1,4 +1,4 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,9 +12,9 @@ import org.apache.commons.io.IOUtils;
 import com.google.common.eventbus.Subscribe;
 import com.google.gson.JsonParser;
 
-import bleach.hack.event.events.EventEntityRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
+import friend.capybara.event.events.EventEntityRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.HorseBaseEntity;
 import net.minecraft.entity.passive.TameableEntity;

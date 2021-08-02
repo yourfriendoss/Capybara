@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,17 +26,17 @@ import org.lwjgl.opengl.GL11;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventDrawOverlay;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.DiscordRPCManager;
-import bleach.hack.utils.FabricReflect;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventDrawOverlay;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.DiscordRPCManager;
+import friend.capybara.utils.FabricReflect;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.item.ItemStack;
@@ -74,14 +74,13 @@ public class UI extends Module {
 				new SettingSlider("HueSpeed", 0.1, 50, 10, 1).withDesc("Rainbow Speed"), // 13
 				new SettingToggle("ServerBrand", false).withDesc("Shows server brand"), // 14
 				new SettingMode("Info", "BL", "TR", "BR").withDesc("Where on the screan to show the info"), // 15
-				new SettingToggle("Discord", false).withDesc("Show's your discord user")); // 16
+				new SettingToggle("Discord", true).withDesc("Show's your discord user")); // 16
 	}
 
 	@Subscribe
 	public void onDrawOverlay(EventDrawOverlay event) {
 		infoList.clear();
-		mc.textRenderer.drawWithShadow(event.matrix, (mc.options.debugEnabled ? "" : BleachHack.CLIENT), 2, 1,
-				0xfc4c4e);
+		mc.textRenderer.drawWithShadow(event.matrix, (mc.options.debugEnabled ? "" : Capybara.CLIENT), 4, 4, 0x5bcefa);
 		int arrayCount = 0;
 		if ((getSetting(0).asToggle().state || getSetting(1).asToggle().state) && !mc.options.debugEnabled) {
 			List<String> lines = new ArrayList<>();
@@ -91,10 +90,8 @@ public class UI extends Module {
 						lines.add(m.getName());
 			}
 
-			int extra = getSetting(1).asToggle().state ? 1 : 0;
-
 			for (String s : lines) {
-				mc.textRenderer.drawWithShadow(event.matrix, s, 2 + extra, 15 + (arrayCount * 10), 0xfc94af);
+				mc.textRenderer.drawWithShadow(event.matrix, s, 4, 15 + (arrayCount * 10), 0xf5a9b8);
 				arrayCount++;
 			}
 		}

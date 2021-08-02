@@ -1,14 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileMang;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class AutoRespond extends Module {
 
     public void init() {
         String[] arFiles = {"players", "messages", "offlineFormat"};
-        for (String s : arFiles) BleachFileMang.createFile("ar_" + s + ".txt");
-        if (BleachFileMang.readFileLines("ar_offlineFormat.txt").isEmpty())
-            BleachFileMang.appendFile("<%name%>", "ar_offlineFormat.txt");
-        gamers = BleachFileMang.readFileLines("ar_players.txt");
-        msgs = BleachFileMang.readFileLines("ar_messages.txt");
+        for (String s : arFiles) FileManager.createFile("ar_" + s + ".txt");
+        if (FileManager.readFileLines("ar_offlineFormat.txt").isEmpty())
+            FileManager.appendFile("<%name%>", "ar_offlineFormat.txt");
+        gamers = FileManager.readFileLines("ar_players.txt");
+        msgs = FileManager.readFileLines("ar_messages.txt");
     }
     @Subscribe
     public void onChatMessage(EventReadPacket e) {
@@ -46,7 +47,7 @@ public class AutoRespond extends Module {
             return;
         }
         for (String s : gamers) {
-            String formatted = BleachFileMang.readFileLines("ar_offlineFormat.txt").toString().toLowerCase().replace("%name%", s.toLowerCase());
+            String formatted = FileManager.readFileLines("ar_offlineFormat.txt").toString().toLowerCase().replace("%name%", s.toLowerCase());
             if (msg.startsWith(formatted.toLowerCase().replace("[", "").replace("]", "")))
                 mc.player.sendChatMessage(msgs.get(r.nextInt(msgs.size())));
         }
@@ -55,16 +56,16 @@ public class AutoRespond extends Module {
     @Subscribe
     public void onTick(EventTick e) {
         if (getSetting(0).asToggle().state) {
-            gamers = BleachFileMang.readFileLines("ar_players.txt");
-            msgs = BleachFileMang.readFileLines("ar_messages.txt");
+            gamers = FileManager.readFileLines("ar_players.txt");
+            msgs = FileManager.readFileLines("ar_messages.txt");
             getSetting(0).asToggle().toggle();
-            BleachLogger.infoMessage("Files reloaded");
+            CapyLogger.infoMessage("Files reloaded");
         }
     }
 
     private void disable(String fileName) {
-        BleachLogger.errorMessage("./" + BleachHack.NAME + "/" + fileName +" is empty! Disabling AutoRespond...");
-        BleachLogger.infoMessage("Check " + BleachHack.NAME + " in your Minecraft folder!");
+        CapyLogger.errorMessage("./" + Capybara.NAME + "/" + fileName +" is empty! Disabling AutoRespond...");
+        CapyLogger.infoMessage("Check " + Capybara.NAME + " in your Minecraft folder!");
         setToggled(false);
     }
 }

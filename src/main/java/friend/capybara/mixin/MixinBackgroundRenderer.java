@@ -1,7 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.NoRender;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -9,6 +7,9 @@ import net.minecraft.entity.effect.StatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.NoRender;
 
 @Mixin(BackgroundRenderer.class)
 public class MixinBackgroundRenderer {

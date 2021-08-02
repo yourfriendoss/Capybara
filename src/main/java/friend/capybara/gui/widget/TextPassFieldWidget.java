@@ -1,6 +1,6 @@
-package bleach.hack.gui.widget;
+package friend.capybara.gui.widget;
 
-import bleach.hack.utils.FabricReflect;
+import friend.capybara.utils.FabricReflect;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;

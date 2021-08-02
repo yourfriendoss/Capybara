@@ -1,9 +1,10 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventEntityRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventEntityRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.entity.mob.MobEntity;
 
 public class VisibleNametags extends Module {

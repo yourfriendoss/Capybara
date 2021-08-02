@@ -1,7 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.NoRender;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameOverlayRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -9,6 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.NoRender;
 
 @Mixin(InGameOverlayRenderer.class)
 public class MixinInGameOverlayRenderer {

@@ -1,15 +1,16 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.client.gui.screen.ingame.HorseScreen;
 import net.minecraft.client.util.InputUtil;
@@ -56,13 +57,13 @@ public class AutoDonkeyDupe extends Module {
         }
 
         if (chest == -1) {
-            BleachLogger.errorMessage("No chests in hotbar");
+            CapyLogger.errorMessage("No chests in hotbar");
             setToggled(false);
             return;
         }
 
         if (!(mc.currentScreen instanceof HorseScreen)) {
-            BleachLogger.infoMessage("Open a donkey gui to start");
+            CapyLogger.infoMessage("Open a donkey gui to start");
         }
     }
 

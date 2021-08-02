@@ -15,14 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.gui.clickgui.ClickGuiScreen;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
 import org.lwjgl.glfw.GLFW;
+
+import friend.capybara.gui.clickgui.ClickGuiScreen;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
 
 public class ClickGui extends Module {
 

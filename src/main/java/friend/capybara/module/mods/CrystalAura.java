@@ -1,4 +1,4 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,17 +8,17 @@ import java.util.Map;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.setting.other.SettingRotate;
-import bleach.hack.utils.CrystalUtils;
-import bleach.hack.utils.Finder;
-import bleach.hack.utils.WorldUtils;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.setting.other.SettingRotate;
+import friend.capybara.utils.CrystalUtils;
+import friend.capybara.utils.Finder;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -110,7 +110,7 @@ public class CrystalAura extends Module {
 				break;
 
 			if (mc.player.distanceTo(p) >= 8 || p == mc.player || p.isDead()
-					|| BleachHack.friendMang.has(p.getDisplayName().getString())
+					|| Capybara.friendMang.has(p.getDisplayName().getString())
 					|| (mc.player.inventory.getMainHandStack().getItem() != Items.END_CRYSTAL
 							&& !getSetting(7).asToggle().state))
 				continue;

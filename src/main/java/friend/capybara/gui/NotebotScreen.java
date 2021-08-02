@@ -15,13 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui;
+package friend.capybara.gui;
 
-import bleach.hack.gui.window.AbstractWindowScreen;
-import bleach.hack.gui.window.Window;
-import bleach.hack.module.mods.Notebot;
-import bleach.hack.utils.NotebotUtils;
-import bleach.hack.utils.file.BleachFileMang;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.util.math.MatrixStack;
@@ -32,6 +27,12 @@ import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
+
+import friend.capybara.gui.window.AbstractWindowScreen;
+import friend.capybara.gui.window.Window;
+import friend.capybara.module.mods.Notebot;
+import friend.capybara.utils.NotebotUtils;
+import friend.capybara.utils.file.FileManager;
 
 import java.io.IOException;
 import java.net.URI;
@@ -60,7 +61,7 @@ public class NotebotScreen extends AbstractWindowScreen {
         files = new ArrayList<>();
 
         try {
-            Stream<Path> paths = Files.walk(BleachFileMang.getDir().resolve("notebot"));
+            Stream<Path> paths = Files.walk(FileManager.getDir().resolve("notebot"));
             paths.forEach(p -> files.add(p.getFileName().toString()));
             paths.close();
             files.remove(0);
@@ -205,7 +206,7 @@ public class NotebotScreen extends AbstractWindowScreen {
             if (entry != null) {
                 /* Pfft why use buttons when you can use meaningless rectangles with messy code */
                 if (double_1 > x + w - w / 2 + 10 && double_1 < x + w - w / 4 && double_2 > y + h - 15 && double_2 < y + h - 5) {
-                    BleachFileMang.deleteFile("notebot", entry.fileName);
+                    FileManager.deleteFile("notebot", entry.fileName);
                     client.openScreen(this);
                 }
                 if (double_1 > x + w - w / 4 + 5 && double_1 < x + w - 5 && double_2 > y + h - 15 && double_2 < y + h - 5) {
@@ -260,7 +261,7 @@ public class NotebotScreen extends AbstractWindowScreen {
         public NotebotEntry(String file) {
             /* File and lines */
             fileName = file;
-            lines = BleachFileMang.readFileLines("notebot", file)
+            lines = FileManager.readFileLines("notebot", file)
                     .stream().filter(s -> !(s.isEmpty() || s.startsWith("//") || s.startsWith(";"))).collect(Collectors.toList());
 
             /* Get length */

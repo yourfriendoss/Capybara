@@ -1,7 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.NoRender;
 import net.minecraft.client.render.Camera;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -9,6 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.NoRender;
 
 @Mixin(Camera.class)
 public class MixinCamera {

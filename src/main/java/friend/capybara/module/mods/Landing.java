@@ -1,11 +1,12 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Hand;
@@ -26,7 +27,7 @@ public class Landing extends Module {
         Vec3d vec = new Vec3d(block.getX(), block.getY(), block.getZ());
 
         if (!mc.world.getBlockState(block).isAir()) {
-            BleachLogger.infoMessage("Can't place the block!");
+            CapyLogger.infoMessage("Can't place the block!");
             toggle();
             return;
         }
@@ -41,7 +42,7 @@ public class Landing extends Module {
                 }
             }
             if (blockSlot == null) {
-                BleachLogger.infoMessage("No blocks found in hotbar!");
+                CapyLogger.infoMessage("No blocks found in hotbar!");
                 toggle();
                 return;
             }

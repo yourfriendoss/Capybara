@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.Finder;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.Finder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Items;
@@ -27,7 +28,7 @@ public class AutoNametag extends Module {
             if (mc.player.getMainHandStack().getItem() != Items.NAME_TAG) {
                 Integer nameTagSlot = Finder.find(Items.NAME_TAG, true);
                 if (nameTagSlot == null) {
-                    BleachLogger.infoMessage("No nametags found in hotbar! Disabling AutoNametag...");
+                    CapyLogger.infoMessage("No nametags found in hotbar! Disabling AutoNametag...");
                     setToggled(false);
                 } else mc.player.inventory.selectedSlot = nameTagSlot;
             }

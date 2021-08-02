@@ -1,4 +1,4 @@
-package bleach.hack.setting.base;
+package friend.capybara.setting.base;
 
 import java.awt.Color;
 
@@ -9,7 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
+import friend.capybara.gui.clickgui.modulewindow.ModuleWindow;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;

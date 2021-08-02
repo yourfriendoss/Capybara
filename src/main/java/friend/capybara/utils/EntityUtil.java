@@ -1,4 +1,4 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import net.minecraft.block.FluidBlock;
 import net.minecraft.client.network.ClientPlayerEntity;

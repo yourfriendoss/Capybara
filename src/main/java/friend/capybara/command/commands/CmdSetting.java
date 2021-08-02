@@ -15,16 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingBase;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingBase;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 
 public class CmdSetting extends Command {
 
@@ -46,7 +46,7 @@ public class CmdSetting extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         if (args.length < 2) {
-            BleachLogger.errorMessage(getSyntax());
+            CapyLogger.errorMessage(getSyntax());
             return;
         }
 
@@ -57,11 +57,11 @@ public class CmdSetting extends Command {
         else if (s instanceof SettingToggle) s.asToggle().state = Boolean.valueOf(args[2]);
         else if (s instanceof SettingMode) s.asMode().mode = Integer.parseInt(args[2]);
         else {
-            BleachLogger.errorMessage("Invalid Command");
+            CapyLogger.errorMessage("Invalid Command");
             return;
         }
 
-        BleachLogger.infoMessage("Set Setting " + args[1] + " Of " + m.getName() + " To " + args[2]);
+        CapyLogger.infoMessage("Set Setting " + args[1] + " Of " + m.getName() + " To " + args[2]);
     }
 
 }

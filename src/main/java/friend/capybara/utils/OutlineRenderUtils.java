@@ -1,4 +1,4 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import org.lwjgl.opengl.EXTFramebufferObject;
 import org.lwjgl.opengl.EXTPackedDepthStencil;

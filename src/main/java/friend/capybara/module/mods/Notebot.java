@@ -15,18 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.RenderUtils;
-import bleach.hack.utils.file.BleachFileMang;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.RenderUtils;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.block.enums.Instrument;
@@ -72,11 +73,11 @@ public class Notebot extends Module {
         super.onEnable();
         blockTunes.clear();
         if (mc.player.abilities.creativeMode) {
-            BleachLogger.errorMessage("Not In Survival Mode!");
+            CapyLogger.errorMessage("Not In Survival Mode!");
             setToggled(false);
             return;
         } else if (filePath.isEmpty()) {
-            BleachLogger.errorMessage("No File Loaded!, Use .notebot load [File]");
+            CapyLogger.errorMessage("No File Loaded!, Use .notebot load [File]");
             setToggled(false);
             return;
         } else readFile(filePath);
@@ -106,7 +107,7 @@ public class Notebot extends Module {
         }
 
         if (tunes.size() > blockTunes.size() && !getSetting(3).asToggle().state) {
-            BleachLogger.warningMessage("Mapping Error: Missing " + (tunes.size() - blockTunes.size()) + " Noteblocks");
+            CapyLogger.warningMessage("Mapping Error: Missing " + (tunes.size() - blockTunes.size()) + " Noteblocks");
         }
     }
 
@@ -172,13 +173,13 @@ public class Notebot extends Module {
             if (getSetting(4).asToggle().state) {
                 try {
                     List<String> files = new ArrayList<>();
-                    Stream<Path> paths = Files.walk(BleachFileMang.getDir().resolve("notebot"));
+                    Stream<Path> paths = Files.walk(FileManager.getDir().resolve("notebot"));
                     paths.forEach(p -> files.add(p.getFileName().toString()));
                     paths.close();
                     filePath = files.get(new Random().nextInt(files.size() - 1) + 1);
                     setToggled(false);
                     setToggled(true);
-                    BleachLogger.infoMessage("Now Playing: \u00a7a" + filePath);
+                    CapyLogger.infoMessage("Now Playing: \u00a7a" + filePath);
                 } catch (IOException e) {
                 }
             } else if (getSetting(2).asToggle().state) {
@@ -233,8 +234,8 @@ public class Notebot extends Module {
         notes.clear();
 
         /* Read the file */
-        BleachFileMang.createFile("notebot", fileName);
-        List<String> lines = BleachFileMang.readFileLines("notebot", fileName)
+        FileManager.createFile("notebot", fileName);
+        List<String> lines = FileManager.readFileLines("notebot", fileName)
                 .stream().filter(s -> !(s.isEmpty() || s.startsWith("//") || s.startsWith(";"))).collect(Collectors.toList());
         for (String s : lines) s = s.replaceAll(" ", "");
 
@@ -244,7 +245,7 @@ public class Notebot extends Module {
             try {
                 notes.add(Arrays.asList(Integer.parseInt(s1[0]), Integer.parseInt(s1[1]), Integer.parseInt(s1[2])));
             } catch (Exception e) {
-                BleachLogger.warningMessage("Error Parsing Note: \u00a7o" + s);
+                CapyLogger.warningMessage("Error Parsing Note: \u00a7o" + s);
             }
         }
 
@@ -256,7 +257,7 @@ public class Notebot extends Module {
                     tunes.add(Arrays.asList(Integer.parseInt(strings.get(1)), Integer.parseInt(strings.get(2))));
                 }
             } catch (Exception e) {
-                BleachLogger.warningMessage("Error Trying To Tune: \u00a7o" + s);
+                CapyLogger.warningMessage("Error Trying To Tune: \u00a7o" + s);
             }
         }
     }

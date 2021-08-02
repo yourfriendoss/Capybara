@@ -1,9 +1,9 @@
-package bleach.hack.gui.clickgui.modulewindow;
+package friend.capybara.gui.clickgui.modulewindow;
 
 import org.apache.commons.lang3.tuple.Triple;
 
-import bleach.hack.gui.window.Window;
-import bleach.hack.utils.ColourThingy;
+import friend.capybara.gui.window.Window;
+import friend.capybara.utils.ColourThingy;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;

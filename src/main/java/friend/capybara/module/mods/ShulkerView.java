@@ -1,4 +1,4 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import org.lwjgl.opengl.GL11;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventDrawOverlay;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.utils.ColourThingy;
-import bleach.hack.utils.ItemContentUtils;
-import bleach.hack.utils.RenderUtils;
+import friend.capybara.event.events.EventDrawOverlay;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.utils.ColourThingy;
+import friend.capybara.utils.ItemContentUtils;
+import friend.capybara.utils.RenderUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.ItemFrameEntity;

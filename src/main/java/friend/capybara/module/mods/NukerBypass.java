@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +23,16 @@ import java.util.List;
 import com.google.common.collect.Maps;
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.EntityUtils;
-import bleach.hack.utils.FabricReflect;
-import bleach.hack.utils.WorldUtils;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.EntityUtils;
+import friend.capybara.utils.FabricReflect;
+import friend.capybara.utils.WorldUtils;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
@@ -61,7 +61,7 @@ public class NukerBypass extends Module {
 
 	public void onEnable() {
 		blockList.clear();
-		for (String s : BleachFileMang.readFileLines("nukerblocks.txt"))
+		for (String s : FileManager.readFileLines("nukerblocks.txt"))
 			blockList.add(Registry.BLOCK.get(new Identifier(s)));
 
 		super.onEnable();

@@ -15,11 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileManager;
 
 public class CmdPrefix extends Command {
 
@@ -41,14 +41,14 @@ public class CmdPrefix extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         if (args[0].isEmpty()) {
-            BleachLogger.errorMessage("Prefix Cannot Be Empty");
+            CapyLogger.errorMessage("Prefix Cannot Be Empty");
             return;
         }
 
-        BleachFileMang.createEmptyFile("prefix.txt");
-        BleachFileMang.appendFile(args[0], "prefix.txt");
+        FileManager.createEmptyFile("prefix.txt");
+        FileManager.appendFile(args[0], "prefix.txt");
         PREFIX = args[0];
-        BleachLogger.infoMessage("Set Prefix To: \"" + args[0] + "\"");
+        CapyLogger.infoMessage("Set Prefix To: \"" + args[0] + "\"");
     }
 
 }

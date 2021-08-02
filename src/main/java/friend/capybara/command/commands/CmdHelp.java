@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.command.CommandManager;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.command.CommandManager;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.LiteralText;
 
@@ -52,11 +52,11 @@ public class CmdHelp extends Command {
         for (Command c : CommandManager.getCommands()) {
             if (!cmd.isEmpty() && !cmd.equalsIgnoreCase(c.getAlias())) continue;
 
-            LiteralText text = new LiteralText("\u00a7f[\u00A73" + BleachHack.NAME +"\u00A7f] [\u00A73" + Command.PREFIX + c.getAlias() + "\u00A7f] " + c.getSyntax());
+            LiteralText text = new LiteralText("\u00a7f[\u00A73" + Capybara.NAME +"\u00A7f] [\u00A73" + Command.PREFIX + c.getAlias() + "\u00A7f] " + c.getSyntax());
             text.setStyle(text.getStyle().withHoverEvent(
                     new HoverEvent(HoverEvent.Action.SHOW_TEXT, new LiteralText(
                             "\u00A79" + Command.PREFIX + c.getAlias() + "\n" + c.getSyntax() + "\n" + c.getDescription()))));
-            BleachLogger.noPrefixMessage(text);
+            CapyLogger.noPrefixMessage(text);
         }
     }
 

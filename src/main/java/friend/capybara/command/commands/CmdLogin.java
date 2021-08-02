@@ -15,11 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.LoginManager;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.LoginManager;
 import net.minecraft.network.packet.s2c.play.DisconnectS2CPacket;
 import net.minecraft.text.LiteralText;
 
@@ -43,7 +43,7 @@ public class CmdLogin extends Command {
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		if (args[0] == null || args[1] == null) {
-			BleachLogger.errorMessage("Missing email or password.");
+			CapyLogger.errorMessage("Missing email or password.");
 			return;
 		}
 		String loginResult = LoginManager.login(args[0], args[1]);
@@ -52,7 +52,7 @@ public class CmdLogin extends Command {
 				this.mc.player.networkHandler.onDisconnect(new DisconnectS2CPacket(new LiteralText(
 						"Successfully logged in as \"" + mc.getSession().getUsername() + "\", please reconnect.")));
 			} else {
-				BleachLogger.errorMessage(loginResult);
+				CapyLogger.errorMessage(loginResult);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

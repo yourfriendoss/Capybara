@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.utils.Finder;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.utils.Finder;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 

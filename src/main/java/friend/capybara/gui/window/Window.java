@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui.window;
+package friend.capybara.gui.window;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import java.util.List;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.utils.ColourThingy;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.utils.ColourThingy;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;

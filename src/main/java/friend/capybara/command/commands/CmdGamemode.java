@@ -15,10 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.world.GameMode;
 
 public class CmdGamemode extends Command {
@@ -45,28 +45,28 @@ public class CmdGamemode extends Command {
         try {
             gm = Integer.parseInt(args[0]);
         } catch (Exception e) {
-            BleachLogger.errorMessage("Unable to parse gamemode.");
+            CapyLogger.errorMessage("Unable to parse gamemode.");
             return;
         }
 
         if (gm == 0) {
             mc.player.setGameMode(GameMode.SURVIVAL);
             mc.interactionManager.setGameMode(GameMode.SURVIVAL);
-            BleachLogger.infoMessage("Set gamemode to survival.");
+            CapyLogger.infoMessage("Set gamemode to survival.");
         } else if (gm == 1) {
             mc.player.setGameMode(GameMode.CREATIVE);
             mc.interactionManager.setGameMode(GameMode.CREATIVE);
-            BleachLogger.infoMessage("Set gamemode to creative.");
+            CapyLogger.infoMessage("Set gamemode to creative.");
         } else if (gm == 2) {
             mc.player.setGameMode(GameMode.ADVENTURE);
             mc.interactionManager.setGameMode(GameMode.ADVENTURE);
-            BleachLogger.infoMessage("Set gamemode to adventure.");
+            CapyLogger.infoMessage("Set gamemode to adventure.");
         } else if (gm == 3) {
             mc.player.setGameMode(GameMode.SPECTATOR);
             mc.interactionManager.setGameMode(GameMode.SPECTATOR);
-            BleachLogger.infoMessage("Set gamemode to spectator.");
+            CapyLogger.infoMessage("Set gamemode to spectator.");
         } else {
-            BleachLogger.warningMessage("Unknown Gamemode Number.");
+            CapyLogger.warningMessage("Unknown Gamemode Number.");
         }
     }
 

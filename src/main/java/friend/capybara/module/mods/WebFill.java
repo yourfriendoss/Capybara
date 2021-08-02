@@ -1,13 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.Finder;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.Finder;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,7 +36,7 @@ public class WebFill extends Module {
 
         for (Entity entity : mc.world.getEntities()) {
             if (!(entity instanceof PlayerEntity) || entity == mc.player || mc.player.distanceTo(entity) > 6
-                    || BleachHack.friendMang.has(entity.getDisplayName().getString())) continue;
+                    || Capybara.friendMang.has(entity.getDisplayName().getString())) continue;
 
 
             if (placeWeb(entity.getBlockPos().down(), slot)) return;

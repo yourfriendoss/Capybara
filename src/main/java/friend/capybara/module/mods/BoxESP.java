@@ -15,18 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventWorldRenderEntity;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingColor;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.EntityUtils;
-import bleach.hack.utils.RenderUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventWorldRenderEntity;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingColor;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.EntityUtils;
+import friend.capybara.utils.RenderUtils;
 import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.OutlineVertexConsumerProvider;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -72,7 +73,7 @@ public class BoxESP extends Module {
     public void onWorldEntityRender(EventWorldRenderEntity event) {
 
         if (event.entity instanceof PlayerEntity && event.entity != mc.player && getSetting(0).asToggle().state) {
-            if (BleachHack.friendMang.has(event.entity.getName().asString())) {
+            if (Capybara.friendMang.has(event.entity.getName().asString())) {
                 float[] col = getSetting(0).asToggle().getChild(1).asColor().getRGBFloat();
                 event.vertex = getOutline(event.buffers, col[0], col[1], col[2]);
                 RenderUtils.drawOutlineBox(event.entity.getBoundingBox(), col[0], col[1], col[2], 1f);
@@ -110,11 +111,11 @@ public class BoxESP extends Module {
             RenderUtils.drawFilledBox(event.entity.getBoundingBox(), 1.0F, 0.0F, 0.0F, 1F);
         }
         if (!strength_alert.toString().contains(event.entity.getUuidAsString()) && (event.entity instanceof PlayerEntity) && ((PlayerEntity) event.entity).hasStatusEffect(StatusEffects.STRENGTH) && this.getSettings().get(7).asToggle().state && this.getSettings().get(7).asToggle().getChild(0).asToggle().state) {
-            BleachLogger.infoMessage(event.entity.getEntityName() + " has drank strength!");
+            CapyLogger.infoMessage(event.entity.getEntityName() + " has drank strength!");
             strength_alert.add(event.entity.getUuidAsString());
         } else if (strength_alert.toString().contains(event.entity.getUuidAsString()) && (event.entity instanceof PlayerEntity) && !((PlayerEntity) event.entity).hasStatusEffect(StatusEffects.STRENGTH)) {
             strength_alert.removeAll(Collections.singleton(event.entity.getUuidAsString()));
-            BleachLogger.infoMessage(event.entity.getEntityName() + " no longer has strength!");
+            CapyLogger.infoMessage(event.entity.getEntityName() + " no longer has strength!");
         }
 
     }

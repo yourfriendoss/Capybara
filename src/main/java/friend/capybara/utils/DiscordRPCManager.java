@@ -1,4 +1,4 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;

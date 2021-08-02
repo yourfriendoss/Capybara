@@ -1,14 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.WorldUtils;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.Hand;
@@ -32,7 +32,7 @@ public class AutoWither extends Module {
 		super.onEnable();
 		ticksPassed = 0;
 		if (getSetting(1).asToggle().state) {
-			BleachLogger.warningMessage("Setting ticks passed to 0");
+			CapyLogger.warningMessage("Setting ticks passed to 0");
 		}
 	}
 
@@ -55,12 +55,12 @@ public class AutoWither extends Module {
 			}
 		}
 		if (soulSandSlot == -1) {
-			BleachLogger.warningMessage("No soul sand found in your hotbar!");
+			CapyLogger.warningMessage("No soul sand found in your hotbar!");
 			ModuleManager.getModule(AutoWither.class).toggle();
 			return;
 		}
 		if (skullSlot == -1) {
-			BleachLogger.warningMessage("No wither skulls found in your hotbar!");
+			CapyLogger.warningMessage("No wither skulls found in your hotbar!");
 			ModuleManager.getModule(AutoWither.class).toggle();
 			return;
 		}
@@ -80,7 +80,7 @@ public class AutoWither extends Module {
 					&& mc.world.getBlockState(targetPos.add(1, 2, 1)).getMaterial().isReplaceable()
 					&& mc.world.getBlockState(targetPos.add(1, 2, -1)).getMaterial().isReplaceable()) {
 				if (getSetting(1).asToggle().state) {
-					BleachLogger.warningMessage("Attempting to place wither body");
+					CapyLogger.warningMessage("Attempting to place wither body");
 				}
 				mc.player.inventory.selectedSlot = soulSandSlot;
 				mc.interactionManager.interactBlock(mc.player, mc.world, Hand.MAIN_HAND, new BlockHitResult(
@@ -102,7 +102,7 @@ public class AutoWither extends Module {
 					&& mc.world.getBlockState(targetPos.add(2, 2, 1)).getMaterial().isReplaceable()
 					&& mc.world.getBlockState(targetPos.add(2, 2, -1)).getMaterial().isReplaceable()) {
 				if (getSetting(1).asToggle().state) {
-					BleachLogger.warningMessage("Attempting to place wither skulls");
+					CapyLogger.warningMessage("Attempting to place wither skulls");
 				}
 				mc.player.inventory.selectedSlot = skullSlot;
 				if (getSetting(0).asToggle().state) {

@@ -1,4 +1,4 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 public final class Timer
 {

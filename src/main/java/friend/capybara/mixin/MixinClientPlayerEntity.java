@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,18 +26,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.mojang.authlib.GameProfile;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventClientMove;
-import bleach.hack.event.events.EventMovementTick;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.BetterPortal;
-import bleach.hack.module.mods.Freecam;
-import bleach.hack.module.mods.NoSlow;
-import bleach.hack.module.mods.SafeWalk;
-import bleach.hack.module.mods.Scaffold;
-import bleach.hack.utils.BleachQueue;
-import bleach.hack.utils.file.BleachFileHelper;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventClientMove;
+import friend.capybara.event.events.EventMovementTick;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.BetterPortal;
+import friend.capybara.module.mods.Freecam;
+import friend.capybara.module.mods.NoSlow;
+import friend.capybara.module.mods.SafeWalk;
+import friend.capybara.module.mods.Scaffold;
+import friend.capybara.utils.CapyQueue;
+import friend.capybara.utils.file.FileHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -65,20 +65,20 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 	public void tick(CallbackInfo info) {
 		try {
 			if (MinecraftClient.getInstance().player.age % 100 == 0) {
-				if (BleachFileHelper.SCHEDULE_SAVE_MODULES)
-					BleachFileHelper.saveModules();
-				if (BleachFileHelper.SCHEDULE_SAVE_CLICKGUI)
-					BleachFileHelper.saveClickGui();
-				if (BleachFileHelper.SCHEDULE_SAVE_FRIENDS)
-					BleachFileHelper.saveFriends();
+				if (FileHelper.SCHEDULE_SAVE_MODULES)
+					FileHelper.saveModules();
+				if (FileHelper.SCHEDULE_SAVE_CLICKGUI)
+					FileHelper.saveClickGui();
+				if (FileHelper.SCHEDULE_SAVE_FRIENDS)
+					FileHelper.saveFriends();
 			}
 
-			BleachQueue.nextQueue();
+			CapyQueue.nextQueue();
 		} catch (Exception e) {
 		}
 
 		EventTick event = new EventTick();
-		BleachHack.eventBus.post(event);
+		Capybara.eventBus.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}
@@ -86,7 +86,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 	@Inject(at = @At("HEAD"), method = "sendMovementPackets()V", cancellable = true)
 	public void sendMovementPackets(CallbackInfo info) {
 		EventMovementTick event = new EventMovementTick();
-		BleachHack.eventBus.post(event);
+		Capybara.eventBus.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}
@@ -104,7 +104,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 	@Inject(at = @At("HEAD"), method = "move", cancellable = true)
 	public void move(MovementType movementType_1, Vec3d vec3d_1, CallbackInfo info) {
 		EventClientMove event = new EventClientMove(movementType_1, vec3d_1);
-		BleachHack.eventBus.post(event);
+		Capybara.eventBus.post(event);
 		if (event.isCancelled()) {
 			info.cancel();
 		} else if (!movementType_1.equals(event.type) || !vec3d_1.equals(event.vec3d)) {

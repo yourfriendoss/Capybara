@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,11 +23,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventDrawContainer;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.AutoDonkeyDupe;
-import bleach.hack.module.mods.MountBypass;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventDrawContainer;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.AutoDonkeyDupe;
+import friend.capybara.module.mods.MountBypass;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -81,7 +81,7 @@ public abstract class MixinContainerScreen extends Screen {
 	public void render(MatrixStack matrix, int mouseX, int mouseY, float delta, CallbackInfo info) {
 		EventDrawContainer event = new EventDrawContainer(
 				(HandledScreen<?>) MinecraftClient.getInstance().currentScreen, mouseX, mouseY, matrix); // hmm // hmm?
-		BleachHack.eventBus.post(event);
+		Capybara.eventBus.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}

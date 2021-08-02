@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.setting.base;
+package friend.capybara.setting.base;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 
-import bleach.hack.gui.clickgui.modulewindow.ModuleWindow;
+import friend.capybara.gui.clickgui.modulewindow.ModuleWindow;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;

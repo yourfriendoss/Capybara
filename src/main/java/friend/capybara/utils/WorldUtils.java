@@ -15,14 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils;
+package friend.capybara.utils;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.util.Arrays;
 import java.util.List;
 
-import bleach.hack.setting.other.SettingRotate;
+import friend.capybara.setting.other.SettingRotate;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;

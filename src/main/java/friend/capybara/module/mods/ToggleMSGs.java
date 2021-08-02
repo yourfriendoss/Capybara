@@ -1,7 +1,7 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 
 public class ToggleMSGs extends Module{
 

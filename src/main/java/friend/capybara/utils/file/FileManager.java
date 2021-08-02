@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils.file;
+package friend.capybara.utils.file;
 
 import java.io.FileWriter;
 import java.nio.file.Files;
@@ -26,17 +26,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import bleach.hack.BleachHack;
-import bleach.hack.module.ModuleManager;
+import friend.capybara.Capybara;
+import friend.capybara.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 
-public class BleachFileMang {
+public class FileManager {
 
 	private static Path dir;
 	static MinecraftClient client = MinecraftClient.getInstance();
 
 	public static void init() {
-		dir = Paths.get(client.runDirectory.getPath(), BleachHack.NAME + "/");
+		dir = Paths.get(client.runDirectory.getPath(), Capybara.NAME + "/");
 		if (!dir.toFile().exists()) {
 			dir.toFile().mkdirs();
 			ModuleManager.getModuleByName("UI").setToggled(true);

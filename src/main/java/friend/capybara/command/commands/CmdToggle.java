@@ -15,13 +15,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.BleachQueue;
+import friend.capybara.command.Command;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.CapyQueue;
 
 public class CmdToggle extends Command {
 
@@ -44,12 +44,12 @@ public class CmdToggle extends Command {
     public void onCommand(String command, String[] args) throws Exception {
         for (Module m : ModuleManager.getModules()) {
             if (args[0].equalsIgnoreCase(m.getName())) {
-                BleachQueue.add(() -> m.toggle());
-                BleachLogger.infoMessage(m.getName() + " Toggled");
+                CapyQueue.add(() -> m.toggle());
+                CapyLogger.infoMessage(m.getName() + " Toggled");
                 return;
             }
         }
-        BleachLogger.errorMessage("Module \"" + args[0] + "\" Not Found!");
+        CapyLogger.errorMessage("Module \"" + args[0] + "\" Not Found!");
     }
 
 }

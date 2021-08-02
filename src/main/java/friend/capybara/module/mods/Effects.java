@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventDrawOverlay;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventDrawOverlay;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.entity.effect.StatusEffectInstance;
 
 public class Effects extends Module {
@@ -24,7 +25,7 @@ public class Effects extends Module {
     public void onDraw(EventDrawOverlay event) {
         for (StatusEffectInstance se : mc.player.getStatusEffects()) {
             if (se.getDuration() < 60 && getSetting(2).asToggle().state)
-                BleachLogger.actionBarMessage("\u00a73" + se.getEffectType().getName().getString() + " \u00a7fis almost over");
+                CapyLogger.actionBarMessage("\u00a73" + se.getEffectType().getName().getString() + " \u00a7fis almost over");
             mc.textRenderer.drawWithShadow(event.matrix,
                     "\u00a7f" + se.getEffectType().getName().getString() + " \u00a73" + (se.getAmplifier() + 1) +
                             " \u00a7f[\u00a73" + Math.round((float) se.getDuration() / 20) + "\u00a7f]",

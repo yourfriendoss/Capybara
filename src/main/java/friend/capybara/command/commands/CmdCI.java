@@ -15,10 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.GameMode;
 
@@ -45,11 +45,11 @@ public class CmdCI extends Command {
             if (mc.interactionManager.getCurrentGameMode() == GameMode.CREATIVE) {
                 mc.player.inventory.setStack(i, new ItemStack(null));
             } else {
-                BleachLogger.errorMessage("Bruh you're not in creative.");
+                CapyLogger.errorMessage("Bruh you're not in creative.");
                 return;
             }
         }
-        BleachLogger.infoMessage("Cleared all items");
+        CapyLogger.infoMessage("Cleared all items");
     }
 
 }

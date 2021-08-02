@@ -15,15 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module;
+package friend.capybara.module;
 
-import bleach.hack.BleachHack;
-import bleach.hack.module.mods.OffhandApple;
-import bleach.hack.module.mods.ToggleMSGs;
-import bleach.hack.setting.base.SettingBase;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileHelper;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.Capybara;
+import friend.capybara.module.mods.OffhandApple;
+import friend.capybara.module.mods.ToggleMSGs;
+import friend.capybara.setting.base.SettingBase;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileHelper;
 import net.minecraft.client.MinecraftClient;
 
 import java.lang.reflect.Method;
@@ -64,28 +65,28 @@ public class Module {
     }
 
     public void onEnable() {
-        BleachFileHelper.SCHEDULE_SAVE_MODULES = true;
+        FileHelper.SCHEDULE_SAVE_MODULES = true;
 
         for (Method method : getClass().getMethods()) {
             if (method.isAnnotationPresent(Subscribe.class)) {
-                BleachHack.eventBus.register(this);
+                Capybara.eventBus.register(this);
                 break;
             }
         }
         if (ModuleManager.getModule(ToggleMSGs.class).isToggled()
                 && !this.getName().equals("ClickGUI") && !this.getName().equals("ColourChooser")
                 && (!ModuleManager.getModule(OffhandApple.class).isToggled() || !getName().equals("AutoTotem"))){
-            BleachLogger.infoMessage(this.getName() + " enabled");
+            CapyLogger.infoMessage(this.getName() + " enabled");
         }
     }
 
     public void onDisable() {
-        BleachFileHelper.SCHEDULE_SAVE_MODULES = true;
+        FileHelper.SCHEDULE_SAVE_MODULES = true;
 
         try {
             for (Method method : getClass().getMethods()) {
                 if (method.isAnnotationPresent(Subscribe.class)) {
-                    BleachHack.eventBus.unregister(this);
+                    Capybara.eventBus.unregister(this);
                     break;
                 }
             }
@@ -95,7 +96,7 @@ public class Module {
         if (ModuleManager.getModule(ToggleMSGs.class).isToggled()
                 && !this.getName().equals("ClickGUI") && !this.getName().equals("ColourChooser")
                 && (!ModuleManager.getModule(OffhandApple.class).isToggled() || !getName().equals("AutoTotem"))){
-            BleachLogger.infoMessage(this.getName() + " disabled");
+            CapyLogger.infoMessage(this.getName() + " disabled");
         }
     }
 
@@ -135,7 +136,7 @@ public class Module {
     }
 
     public void setKey(int key) {
-        BleachFileHelper.SCHEDULE_SAVE_MODULES = true;
+        FileHelper.SCHEDULE_SAVE_MODULES = true;
         this.key = key;
     }
 

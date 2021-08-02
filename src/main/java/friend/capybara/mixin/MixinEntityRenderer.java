@@ -15,10 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventEntityRender;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -29,20 +27,23 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventEntityRender;
+
 @Mixin(EntityRenderer.class)
 public abstract class MixinEntityRenderer<T extends Entity> {
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     public void render(T entity_1, float float_1, float float_2, MatrixStack matrixStack_1, VertexConsumerProvider vertexConsumerProvider_1, int int_1, CallbackInfo info) {
         EventEntityRender.Render event = new EventEntityRender.Render(entity_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) info.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "renderLabelIfPresent", cancellable = true)
     public void renderLabelIfPresent(T entity_1, Text text_1, MatrixStack matrixStack_1, VertexConsumerProvider vertexConsumerProvider_1, int int_1, CallbackInfo info) {
         EventEntityRender.Label event = new EventEntityRender.Label(entity_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) info.cancel();
     }
 }

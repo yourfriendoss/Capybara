@@ -15,12 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventDrawOverlay;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.NoRender;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,13 +24,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventDrawOverlay;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.NoRender;
+
 @Mixin(InGameHud.class)
 public class MixinIngameHud {
 
     @Inject(at = @At(value = "RETURN"), method = "render", cancellable = true)
     public void render(MatrixStack matrixStack, float float_1, CallbackInfo info) {
         EventDrawOverlay event = new EventDrawOverlay(matrixStack);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) info.cancel();
     }
 

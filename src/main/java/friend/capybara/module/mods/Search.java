@@ -1,14 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.RenderUtils;
-import bleach.hack.utils.file.BleachFileMang;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.RenderUtils;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -38,14 +39,14 @@ public class Search extends Module {
     @Override
     public void init() {
         super.init();
-        BleachFileMang.createFile("SearchBlocks.txt");
+        FileManager.createFile("SearchBlocks.txt");
     }
 
     @Subscribe
     public void onTick(EventTick event) {
         if ((System.currentTimeMillis() - time) > 1000) {
             blocks.clear();
-            BleachFileMang.readFileLines("SearchBlocks.txt").forEach(line -> blocks.add(Registry.BLOCK.get(new Identifier(line))));
+            FileManager.readFileLines("SearchBlocks.txt").forEach(line -> blocks.add(Registry.BLOCK.get(new Identifier(line))));
             time = System.currentTimeMillis();
         }
 

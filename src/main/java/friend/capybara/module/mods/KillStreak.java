@@ -1,14 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventDrawOverlay;
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventDrawOverlay;
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 
@@ -30,7 +31,7 @@ public class KillStreak extends Module {
     public void onTick(EventTick eventTick) {
         if (killTime != 0 && (System.currentTimeMillis() - killTime) > 200 && !mc.player.isDead()) {
             kills++;
-            if (getSetting(2).asToggle().state) BleachLogger.infoMessage("Kill streak [\u00a73" + kills + "\u00a7f]");
+            if (getSetting(2).asToggle().state) CapyLogger.infoMessage("Kill streak [\u00a73" + kills + "\u00a7f]");
             killTime = 0;
         }
         if (mc.player.isDead()) {

@@ -1,17 +1,17 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.collect.Sets;
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.setting.other.SettingRotate;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.WorldUtils;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.setting.other.SettingRotate;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.math.BlockPos;
@@ -48,7 +48,7 @@ public class Surround extends Module {
 		}
 
 		if (obby == -1) {
-			BleachLogger.errorMessage("No netherite/obsidian in hotbar!");
+			CapyLogger.errorMessage("No netherite/obsidian in hotbar!");
 			setToggled(false);
 			return;
 		}
@@ -81,7 +81,7 @@ public class Surround extends Module {
 		}
 
 		if (obby == -1) {
-			BleachLogger.errorMessage("Ran out of netherite/obsidian!");
+			CapyLogger.errorMessage("Ran out of netherite/obsidian!");
 			setToggled(false);
 			return;
 		}

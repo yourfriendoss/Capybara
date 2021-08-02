@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventOpenScreen;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachQueue;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventOpenScreen;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyQueue;
 import net.minecraft.client.gui.screen.DeathScreen;
 
 public class AutoRespawn extends Module {
@@ -22,9 +23,9 @@ public class AutoRespawn extends Module {
         if (event.getScreen() instanceof DeathScreen) {
             if (getSetting(0).asToggle().state) {
                 for (int i = 0; i <= (int) getSetting(1).asSlider().getValue(); i++)
-                    BleachQueue.add("autorespawn", () -> {
+                    CapyQueue.add("autorespawn", () -> {
                     });
-                BleachQueue.add("autorespawn", () -> mc.player.requestRespawn());
+                CapyQueue.add("autorespawn", () -> mc.player.requestRespawn());
             } else {
                 mc.player.requestRespawn();
             }

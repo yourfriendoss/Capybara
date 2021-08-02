@@ -1,13 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.Finder;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.Finder;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.Hand;
@@ -31,14 +32,14 @@ public class SelfAnvil extends Module {
         Vec3d vecPos = new Vec3d(anvil.getX(), anvil.getY(), anvil.getZ());
 
         if (!WorldUtils.isBlockEmpty(anvil) || !mc.world.getBlockState(playerPos).isAir()) {
-            BleachLogger.infoMessage("Can't place the block!");
+            CapyLogger.infoMessage("Can't place the block!");
             toggle();
             return;
         }
 
         Integer slot = Finder.find(Items.ANVIL, true);
         if (slot == null) {
-            BleachLogger.infoMessage("No anvils found in hotbar!");
+            CapyLogger.infoMessage("No anvils found in hotbar!");
             toggle();
             return;
         }

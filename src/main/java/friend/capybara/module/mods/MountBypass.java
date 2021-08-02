@@ -1,9 +1,10 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.entity.passive.AbstractDonkeyEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket.InteractionType;

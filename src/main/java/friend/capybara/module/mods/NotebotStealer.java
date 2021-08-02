@@ -15,17 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.FabricReflect;
-import bleach.hack.utils.file.BleachFileMang;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.FabricReflect;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.sound.SoundCategory;
 
@@ -58,10 +59,10 @@ public class NotebotStealer extends Module {
         int i = 0;
         String s = "";
 
-        while (BleachFileMang.fileExists("notebot", "notebot" + i + ".txt")) i++;
+        while (FileManager.fileExists("notebot", "notebot" + i + ".txt")) i++;
         for (List<Integer> i1 : notes) s += i1.get(0) + ":" + i1.get(1) + ":" + i1.get(2) + "\n";
-        BleachFileMang.appendFile(s, "notebot", "notebot" + i + ".txt");
-        BleachLogger.infoMessage("Saved Song As: notebot" + i + ".txt [" + notes.size() + " Notes]");
+        FileManager.appendFile(s, "notebot", "notebot" + i + ".txt");
+        CapyLogger.infoMessage("Saved Song As: notebot" + i + ".txt [" + notes.size() + " Notes]");
     }
 
     @SuppressWarnings("unchecked")

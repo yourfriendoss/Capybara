@@ -15,25 +15,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils.file;
+package friend.capybara.utils.file;
 
-import bleach.hack.BleachHack;
-import bleach.hack.command.Command;
-import bleach.hack.gui.window.Window;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.setting.base.SettingBase;
-import bleach.hack.utils.FriendManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+
+import friend.capybara.Capybara;
+import friend.capybara.command.Command;
+import friend.capybara.gui.window.Window;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.setting.base.SettingBase;
+import friend.capybara.utils.FriendManager;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class BleachFileHelper {
+public class FileHelper {
 
     public static boolean SCHEDULE_SAVE_MODULES = false;
     public static boolean SCHEDULE_SAVE_FRIENDS = false;
@@ -84,11 +85,11 @@ public class BleachFileHelper {
             }
         }
 
-        BleachJsonHelper.setJsonFile(jo, "modules.json");
+        JsonHelper.setJsonFile(jo, "modules.json");
     }
 
     public static void readModules() {
-        JsonObject jo = BleachJsonHelper.readJsonFile("modules.json");
+        JsonObject jo = JsonHelper.readJsonFile("modules.json");
 
         if (jo == null) return;
 
@@ -131,16 +132,16 @@ public class BleachFileHelper {
     public static void saveClickGui() {
         SCHEDULE_SAVE_CLICKGUI = false;
 
-        BleachFileMang.createEmptyFile("clickgui.txt");
+        FileManager.createEmptyFile("clickgui.txt");
 
         String text = "";
         for (Window w : ClickGui.clickGui.windows) text += w.x1 + ":" + w.y1 + "\n";
 
-        BleachFileMang.appendFile(text, "clickgui.txt");
+        FileManager.appendFile(text, "clickgui.txt");
     }
 
     public static void readClickGui() {
-        List<String> lines = BleachFileMang.readFileLines("clickgui.txt");
+        List<String> lines = FileManager.readFileLines("clickgui.txt");
 
         try {
             int c = 0;
@@ -154,26 +155,26 @@ public class BleachFileHelper {
     }
 
     public static void readPrefix() {
-        List<String> lines = BleachFileMang.readFileLines("prefix.txt");
+        List<String> lines = FileManager.readFileLines("prefix.txt");
         if (!lines.isEmpty()) Command.PREFIX = lines.get(0);
     }
 
     public static void readFriends() {
-        BleachHack.friendMang = new FriendManager(BleachFileMang.readFileLines("friends.txt"));
+        Capybara.friendMang = new FriendManager(FileManager.readFileLines("friends.txt"));
     }
 
     public static void saveFriends() {
         SCHEDULE_SAVE_FRIENDS = false;
 
         String toWrite = "";
-        for (String s : BleachHack.friendMang.getFriends()) toWrite += s + "\n";
+        for (String s : Capybara.friendMang.getFriends()) toWrite += s + "\n";
 
-        BleachFileMang.createEmptyFile("friends.txt");
-        BleachFileMang.appendFile(toWrite, "friends.txt");
+        FileManager.createEmptyFile("friends.txt");
+        FileManager.appendFile(toWrite, "friends.txt");
     }
 
     public static String readMiscSetting(String key) {
-        JsonElement element = BleachJsonHelper.readJsonElement(key, "misc.json");
+        JsonElement element = JsonHelper.readJsonElement(key, "misc.json");
 
         try {
             return element.getAsString();
@@ -183,7 +184,7 @@ public class BleachFileHelper {
     }
 
     public static void saveMiscSetting(String key, String value) {
-        BleachJsonHelper.addJsonElement(key, new JsonPrimitive(value), "misc.json");
+        JsonHelper.addJsonElement(key, new JsonPrimitive(value), "misc.json");
     }
 
 }

@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.utils.file;
+package friend.capybara.utils.file;
 
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BleachGithubReader {
+public class GithubReader {
 
     private static URI url;
 

@@ -1,6 +1,6 @@
-package bleach.hack.event.events;
+package friend.capybara.event.events;
 
-import bleach.hack.event.Event;
+import friend.capybara.event.Event;
 import net.minecraft.entity.Entity;
 
 public class EventEntityRemoved extends Event

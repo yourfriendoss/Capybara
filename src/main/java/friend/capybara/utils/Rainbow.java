@@ -1,7 +1,8 @@
-package bleach.hack.utils;
+package friend.capybara.utils;
 
-import bleach.hack.event.events.EventTick;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
 
 import java.awt.*;
 

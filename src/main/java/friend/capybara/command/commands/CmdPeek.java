@@ -15,12 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.BleachQueue;
-import bleach.hack.utils.ItemContentUtils;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.HopperBlock;
@@ -34,6 +30,11 @@ import net.minecraft.screen.ShulkerBoxScreenHandler;
 import net.minecraft.text.Text;
 
 import java.util.List;
+
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.CapyQueue;
+import friend.capybara.utils.ItemContentUtils;
 
 public class CmdPeek extends Command {
 
@@ -57,7 +58,7 @@ public class CmdPeek extends Command {
         ItemStack item = mc.player.inventory.getMainHandStack();
 
         if (!(item.getItem() instanceof BlockItem)) {
-            BleachLogger.errorMessage("Must be holding a containter to peek.");
+            CapyLogger.errorMessage("Must be holding a containter to peek.");
             return;
         }
 
@@ -65,7 +66,7 @@ public class CmdPeek extends Command {
                 && !(((BlockItem) item.getItem()).getBlock() instanceof ChestBlock)
                 && !(((BlockItem) item.getItem()).getBlock() instanceof DispenserBlock)
                 && !(((BlockItem) item.getItem()).getBlock() instanceof HopperBlock)) {
-            BleachLogger.errorMessage("Must be holding a containter to peek.");
+            CapyLogger.errorMessage("Must be holding a containter to peek.");
             return;
         }
 
@@ -73,7 +74,7 @@ public class CmdPeek extends Command {
 
         SimpleInventory inv = new SimpleInventory(items.toArray(new ItemStack[27]));
 
-        BleachQueue.add(() -> {
+        CapyQueue.add(() -> {
             mc.openScreen(new PeekShulkerScreen(
                     new ShulkerBoxScreenHandler(420, mc.player.inventory, inv),
                     mc.player.inventory,

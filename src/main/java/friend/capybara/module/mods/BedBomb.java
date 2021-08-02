@@ -1,15 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventSendPacket;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.event.events.EventWorldRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventSendPacket;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.event.events.EventWorldRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
 import net.minecraft.block.entity.BedBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
@@ -89,7 +89,7 @@ public class BedBomb extends Module {
 		for (Entity e : mc.world.getEntities()) {
 			if (!(e instanceof PlayerEntity) || e == mc.player || ((PlayerEntity) e).isDead())
 				continue;
-			if (BleachHack.friendMang.has(e.getDisplayName().getString()))
+			if (Capybara.friendMang.has(e.getDisplayName().getString()))
 				continue;
 			if (mc.player.distanceTo(e) <= getSetting(3).asSlider().getValue())
 				return true;

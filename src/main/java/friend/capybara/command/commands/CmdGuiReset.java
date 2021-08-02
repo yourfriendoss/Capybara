@@ -15,11 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.module.mods.ClickGui;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.command.Command;
+import friend.capybara.module.mods.ClickGui;
+import friend.capybara.utils.CapyLogger;
 
 public class CmdGuiReset extends Command {
 
@@ -41,7 +41,7 @@ public class CmdGuiReset extends Command {
     @Override
     public void onCommand(String command, String[] args) throws Exception {
         ClickGui.clickGui.resetGui();
-        BleachLogger.infoMessage("Reset the clickgui!");
+        CapyLogger.infoMessage("Reset the clickgui!");
     }
 
 }

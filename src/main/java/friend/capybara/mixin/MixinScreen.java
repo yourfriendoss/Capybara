@@ -1,7 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventDrawTooltip;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.OrderedText;
@@ -9,6 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventDrawTooltip;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class MixinScreen {
     @Inject(at = @At("HEAD"), method = "renderOrderedTooltip", cancellable = true)
     public void renderTooltip(MatrixStack matrix, List<? extends OrderedText> text, int x, int y, CallbackInfo info) {
         EventDrawTooltip event = new EventDrawTooltip(matrix, text, x, y, lastMX, lastMY);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
 
         if (event.isCancelled()) {
             info.cancel();

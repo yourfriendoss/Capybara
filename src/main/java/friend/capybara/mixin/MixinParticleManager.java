@@ -1,9 +1,5 @@
-package bleach.hack.mixin;
+package friend.capybara.mixin;
 
-import bleach.hack.BleachHack;
-import bleach.hack.event.events.EventParticle;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.module.mods.Nuker;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleManager;
@@ -15,6 +11,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import friend.capybara.Capybara;
+import friend.capybara.event.events.EventParticle;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.module.mods.Nuker;
+
 @Mixin(ParticleManager.class)
 public class MixinParticleManager {
 
@@ -22,21 +23,21 @@ public class MixinParticleManager {
     public void addParticle(Particle particle_1, CallbackInfo ci) {
         // pls send help
         EventParticle.Normal event = new EventParticle.Normal(particle_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;)V", cancellable = true)
     public void addEmitter(Entity entity_1, ParticleEffect particleEffect_1, CallbackInfo ci) {
         EventParticle.Emitter event = new EventParticle.Emitter(particleEffect_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;I)V", cancellable = true)
     public void addEmitter1(Entity entity_1, ParticleEffect particleEffect_1, int i, CallbackInfo ci) {
         EventParticle.Emitter event = new EventParticle.Emitter(particleEffect_1);
-        BleachHack.eventBus.post(event);
+        Capybara.eventBus.post(event);
         if (event.isCancelled()) ci.cancel();
     }
 

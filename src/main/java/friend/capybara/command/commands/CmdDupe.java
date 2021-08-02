@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
+import friend.capybara.command.Command;
 import net.minecraft.text.LiteralText;
 
 public class CmdDupe extends Command {

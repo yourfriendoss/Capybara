@@ -15,15 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
-
-import bleach.hack.command.Command;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileMang;
+package friend.capybara.command.commands;
 
 import java.util.List;
+
+import friend.capybara.command.Command;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileManager;
 
 public class CmdDrawn extends Command {
 
@@ -47,27 +47,27 @@ public class CmdDrawn extends Command {
         for (Module m : ModuleManager.getModules()) {
             if (args[0].equalsIgnoreCase(m.getName())) {
                 if (args[1] == null) {
-                    BleachLogger.errorMessage("Expected true or false.");
+                    CapyLogger.errorMessage("Expected true or false.");
                     return;
                 }
                 if (Boolean.parseBoolean(args[1]) == Boolean.FALSE) {
-                    BleachFileMang.appendFile(args[0].toLowerCase(), "drawn.txt");
+                    FileManager.appendFile(args[0].toLowerCase(), "drawn.txt");
                 } else if (Boolean.parseBoolean(args[1]) == Boolean.TRUE) {
-                    List<String> lines = BleachFileMang.readFileLines("drawn.txt");
+                    List<String> lines = FileManager.readFileLines("drawn.txt");
                     System.out.println("[BH] TEST: "+lines.toString());
                     lines.removeIf(s -> s.equals(args[0].toLowerCase()));
                     System.out.println("[BH] TEST: "+lines.toString());
-                    BleachFileMang.createEmptyFile("drawn.txt");
+                    FileManager.createEmptyFile("drawn.txt");
                     for (String line : lines) {
-                        BleachFileMang.appendFile(line.toLowerCase(), "drawn.txt");
+                        FileManager.appendFile(line.toLowerCase(), "drawn.txt");
                     }
                 }
                 m.setDrawn(Boolean.parseBoolean(args[1]));
-                BleachLogger.errorMessage("Drawn \"" + m.getName() + "\" set to " + Boolean.parseBoolean(args[1]));
+                CapyLogger.errorMessage("Drawn \"" + m.getName() + "\" set to " + Boolean.parseBoolean(args[1]));
                 return;
             }
         }
-        BleachLogger.errorMessage("No module provided.");
+        CapyLogger.errorMessage("No module provided.");
     }
 
 }

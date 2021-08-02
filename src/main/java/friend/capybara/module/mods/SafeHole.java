@@ -1,13 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.Finder;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.Finder;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
@@ -36,7 +37,7 @@ public class SafeHole extends Module {
 
         if (!WorldUtils.isBlockEmpty(obsidian)) {
             if (!getSetting(1).asToggle().state) {
-                BleachLogger.infoMessage("Can't place the block!");
+                CapyLogger.infoMessage("Can't place the block!");
                 toggle();
             }
             return;
@@ -57,7 +58,7 @@ public class SafeHole extends Module {
         Integer slot = Finder.find(Items.OBSIDIAN, true);
         if (slot == null) {
             if (!getSetting(1).asToggle().state) {
-                BleachLogger.infoMessage("No obsidian found in hotbar!");
+                CapyLogger.infoMessage("No obsidian found in hotbar!");
                 toggle();
             }
             return;

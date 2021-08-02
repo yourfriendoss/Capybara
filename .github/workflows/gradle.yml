@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: monsterrat
-        path: build/libs/monsterrat-v1.0.jar
+        path: build/libs/capybara-v2.0.jar

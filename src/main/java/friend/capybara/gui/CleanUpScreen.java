@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui;
+package friend.capybara.gui;
 
 import net.minecraft.SharedConstants;
 import net.minecraft.client.gui.screen.Screen;

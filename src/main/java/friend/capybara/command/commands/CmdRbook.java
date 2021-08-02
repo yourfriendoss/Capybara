@@ -15,16 +15,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.packet.c2s.play.BookUpdateC2SPacket;
 import org.apache.commons.lang3.math.NumberUtils;
+
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
 
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -52,7 +53,7 @@ public class CmdRbook extends Command {
         ItemStack item = mc.player.inventory.getMainHandStack();
 
         if (item.getItem() != Items.WRITABLE_BOOK) {
-            BleachLogger.errorMessage("Not Holding A Writable Book!");
+            CapyLogger.errorMessage("Not Holding A Writable Book!");
             return;
         }
 

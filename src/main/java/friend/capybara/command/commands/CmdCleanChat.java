@@ -15,13 +15,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.command.commands;
+package friend.capybara.command.commands;
 
 import java.util.List;
 
-import bleach.hack.command.Command;
-import bleach.hack.utils.BleachLogger;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.command.Command;
+import friend.capybara.utils.CapyLogger;
+import friend.capybara.utils.file.FileManager;
 
 public class CmdCleanChat extends Command {
 
@@ -43,20 +43,20 @@ public class CmdCleanChat extends Command {
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		if (args[0] == null) {
-			BleachLogger.errorMessage("Expected add or del.");
+			CapyLogger.errorMessage("Expected add or del.");
 			return;
 		}
 		if (args[0].toLowerCase().contains("add")) {
-			BleachFileMang.appendFile(args[1].toLowerCase(), "cleanchat.txt");
-			BleachLogger.infoMessage("Word \"" + args[1] + "\" has been added to the list of blacklisted words");
+			FileManager.appendFile(args[1].toLowerCase(), "cleanchat.txt");
+			CapyLogger.infoMessage("Word \"" + args[1] + "\" has been added to the list of blacklisted words");
 		} else if (args[0].toLowerCase().contains("del")) {
-			List<String> lines = BleachFileMang.readFileLines("cleanchat.txt");
+			List<String> lines = FileManager.readFileLines("cleanchat.txt");
 			lines.removeIf(s -> s.equals(args[1].toLowerCase()));
-			BleachFileMang.createEmptyFile("cleanchat.txt");
+			FileManager.createEmptyFile("cleanchat.txt");
 			for (String line : lines) {
-				BleachFileMang.appendFile(line.toLowerCase(), "cleanchat.txt");
+				FileManager.appendFile(line.toLowerCase(), "cleanchat.txt");
 			}
-			BleachLogger.infoMessage("Word \"" + args[1] + "\" has been removed from the list of blacklisted words");
+			CapyLogger.infoMessage("Word \"" + args[1] + "\" has been removed from the list of blacklisted words");
 		}
 	}
 

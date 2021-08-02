@@ -15,18 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.setting.other.SettingRotate;
-import bleach.hack.utils.WorldUtils;
-import bleach.hack.utils.file.BleachFileMang;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.setting.other.SettingRotate;
+import friend.capybara.utils.WorldUtils;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Hand;
@@ -60,7 +61,7 @@ public class Nuker extends Module {
 
     public void onEnable() {
         blockList.clear();
-        for (String s : BleachFileMang.readFileLines("nukerblocks.txt"))
+        for (String s : FileManager.readFileLines("nukerblocks.txt"))
             blockList.add(Registry.BLOCK.get(new Identifier(s)));
 
         super.onEnable();

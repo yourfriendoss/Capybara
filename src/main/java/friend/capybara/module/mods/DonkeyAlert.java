@@ -1,15 +1,15 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventEntityRender;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.module.ModuleManager;
-import bleach.hack.utils.BleachLogger;
+import friend.capybara.event.events.EventEntityRender;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.module.ModuleManager;
+import friend.capybara.utils.CapyLogger;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AbstractDonkeyEntity;
 
@@ -34,13 +34,13 @@ public class DonkeyAlert extends Module {
 						+ (int) e.getZ();
 				switch (e.getType().toString()) {
 				case "entity.minecraft.donkey":
-					BleachLogger.infoMessage("Found Donkey! X: " + coords);
+					CapyLogger.infoMessage("Found Donkey! X: " + coords);
 					break;
 				case "entity.minecraft.llama":
-					BleachLogger.infoMessage("Found Llama! X: " + coords);
+					CapyLogger.infoMessage("Found Llama! X: " + coords);
 					break;
 				case "entity.minecraft.mule":
-					BleachLogger.infoMessage("Found Mule! X: " + coords);
+					CapyLogger.infoMessage("Found Mule! X: " + coords);
 					break;
 				}
 				mob_uuids.add(e.getUuidAsString());

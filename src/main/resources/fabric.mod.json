@@ -1,25 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "bigrat",
+  "id": "capybara",
   "version": "1.0.0",
-  "name": "BigRat",
-  "description": "low quality bleachhack skid",
+  "name": "Capybara",
+  "description": "low quality bigrat skid",
   "authors": [
-    "ZimnyCat#2355"
+    "yourfriend.lv"
   ],
-  "contact": {
-    "homepage": "https://bigrat.site/",
-    "sources": "https://github.com/ZimnyCat/BigRat"
-  },
   "license": "GPL-3.0",
-  "icon": "assets/bleachhack/icon.png",
+  "icon": "assets/capybara/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "bleach.hack.BleachHack"
+      "friend.capybara.Capybara"
     ]
   },
   "mixins": [
-    "bleachhack.mixins.json"
+    "capybara.mixins.json"
   ]
 }

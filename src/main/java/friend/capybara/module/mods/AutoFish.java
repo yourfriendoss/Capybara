@@ -1,10 +1,11 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventReadPacket;
-import bleach.hack.mixin.IMinecraftClient;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventReadPacket;
+import friend.capybara.mixin.IMinecraftClient;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.sound.SoundEvents;

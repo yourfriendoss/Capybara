@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.gui.widget;
+package friend.capybara.gui.widget;
 
 import org.lwjgl.opengl.GL11;
 

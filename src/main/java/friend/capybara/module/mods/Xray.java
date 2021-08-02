@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,12 +24,12 @@ import java.util.Set;
 
 import com.google.common.eventbus.Subscribe;
 
-import bleach.hack.event.events.EventBlockRender;
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.file.BleachFileMang;
+import friend.capybara.event.events.EventBlockRender;
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.file.FileManager;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -65,7 +65,7 @@ public class Xray extends Module {
 			return;
 		visibleBlocks.clear();
 
-		for (String s : BleachFileMang.readFileLines("xrayblocks.txt")) {
+		for (String s : FileManager.readFileLines("xrayblocks.txt")) {
 			setVisible(Registry.BLOCK.get(new Identifier(s)));
 		}
 

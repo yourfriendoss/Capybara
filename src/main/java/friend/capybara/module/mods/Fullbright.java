@@ -1,11 +1,12 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingMode;
-import bleach.hack.utils.BleachQueue;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingMode;
+import friend.capybara.utils.CapyQueue;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
@@ -27,7 +28,7 @@ public class Fullbright extends Module {
 
             while (g > 1) {
                 double nextStep = Math.max(g - 2, 1);
-                BleachQueue.add("fullbright", () -> mc.options.gamma = nextStep);
+                CapyQueue.add("fullbright", () -> mc.options.gamma = nextStep);
                 g -= 2;
             }
         }
@@ -43,7 +44,7 @@ public class Fullbright extends Module {
     public void onEnable() {
         super.onEnable();
 
-        BleachQueue.cancelQueue("fullbright");
+        CapyQueue.cancelQueue("fullbright");
     }
 
     @Subscribe

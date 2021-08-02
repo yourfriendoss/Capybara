@@ -1,13 +1,14 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventClientMove;
-import bleach.hack.event.events.EventParticle;
-import bleach.hack.event.events.EventSoundPlay;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.WorldUtils;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventClientMove;
+import friend.capybara.event.events.EventParticle;
+import friend.capybara.event.events.EventSoundPlay;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.WorldUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.particle.PortalParticle;
 

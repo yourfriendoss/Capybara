@@ -1,12 +1,13 @@
-package bleach.hack.module.mods;
+package friend.capybara.module.mods;
 
-import bleach.hack.event.events.EventTick;
-import bleach.hack.module.Category;
-import bleach.hack.module.Module;
-import bleach.hack.setting.base.SettingSlider;
-import bleach.hack.setting.base.SettingToggle;
-import bleach.hack.utils.BleachQueue;
 import com.google.common.eventbus.Subscribe;
+
+import friend.capybara.event.events.EventTick;
+import friend.capybara.module.Category;
+import friend.capybara.module.Module;
+import friend.capybara.setting.base.SettingSlider;
+import friend.capybara.setting.base.SettingToggle;
+import friend.capybara.utils.CapyQueue;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -33,7 +34,7 @@ public class AutoArmor extends Module {
 
     @Subscribe
     public void onTick(EventTick event) {
-        if (!BleachQueue.isEmpty("autoarmor_equip"))
+        if (!CapyQueue.isEmpty("autoarmor_equip"))
             return;
 
         if (tickDelay > 0) {
