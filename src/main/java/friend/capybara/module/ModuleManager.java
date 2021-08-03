@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ModuleManager {
-    private static final List<Module> mods = Arrays.asList(
+	private static final List<Module> mods = Arrays.asList(
         new Ambience(),
         new AnchorAura(),
         new AntiChunkBan(),
@@ -151,39 +151,40 @@ public class ModuleManager {
         new AutoTrap(),
         new CrystalAura(),
         new AutoWither(),
-        new UI()
+        new UI(),
+        new uwunya()
     ).stream().sorted(Comparator.comparing(Module::getName, String.CASE_INSENSITIVE_ORDER)).collect(Collectors.toList());
 
-    public static List<Module> getModules() {
-        return mods;
-    }
+	public static List<Module> getModules() {
+		return mods;
+	}
 
-    public static Module getModule(Class<? extends Module> clazz) {
-        for (Module module : mods) {
-            if (module.getClass().equals(clazz)) {
-                return module;
-            }
-        }
+	public static Module getModule(Class<? extends Module> clazz) {
+		for (Module module : mods) {
+			if (module.getClass().equals(clazz)) {
+				return module;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public static Module getModuleByName(String name) {
-        for (Module m : mods) {
-            if (name.equalsIgnoreCase(m.getName()))
-                return m;
-        }
-        return null;
-    }
+	public static Module getModuleByName(String name) {
+		for (Module m : mods) {
+			if (name.equalsIgnoreCase(m.getName()))
+				return m;
+		}
+		return null;
+	}
 
-    public static List<Module> getModulesInCat(Category cat) {
-        return mods.stream().filter(m -> m.getCategory().equals(cat)).collect(Collectors.toList());
-    }
+	public static List<Module> getModulesInCat(Category cat) {
+		return mods.stream().filter(m -> m.getCategory().equals(cat)).collect(Collectors.toList());
+	}
 
-    @Subscribe
-    public static void handleKeyPress(EventKeyPress eventKeyPress) {
-        if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
-            return;
-        mods.stream().filter(m -> m.getKey() == eventKeyPress.getKey()).forEach(Module::toggle);
-    }
+	@Subscribe
+	public static void handleKeyPress(EventKeyPress eventKeyPress) {
+		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
+			return;
+		mods.stream().filter(m -> m.getKey() == eventKeyPress.getKey()).forEach(Module::toggle);
+	}
 }
