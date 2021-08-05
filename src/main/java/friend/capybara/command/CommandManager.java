@@ -24,7 +24,6 @@ import friend.capybara.command.commands.CmdBind;
 import friend.capybara.command.commands.CmdCI;
 import friend.capybara.command.commands.CmdCleanChat;
 import friend.capybara.command.commands.CmdCredits;
-import friend.capybara.command.commands.CmdCustomChat;
 import friend.capybara.command.commands.CmdDrawn;
 import friend.capybara.command.commands.CmdDupe;
 import friend.capybara.command.commands.CmdEnchant;
@@ -55,7 +54,7 @@ import friend.capybara.utils.CapyLogger;
 public class CommandManager {
 
 	private static List<Command> commands = Arrays.asList(new CmdBind(), new CmdCI(), new CmdOpenFolder(),
-			new CmdCleanChat(), new CmdCredits(), new CmdCustomChat(), new CmdDrawn(), new CmdDupe(), new CmdEnchant(),
+			new CmdCleanChat(), new CmdCredits(), new CmdDrawn(), new CmdDupe(), new CmdEnchant(),
 			new CmdEntityStats(), new CmdFakeText(), new CmdFriends(), new CmdGamemode(), new CmdGive(),
 			new CmdGuiReset(), new CmdHelp(), new CmdLogin(), new CmdNBT(), new CmdNotebot(), new CmdNuker(),
 			new CmdPeek(), new CmdPrefix(), new CmdRbook(), new CmdRename(), new CmdRpc(), new CmdSearch(),
